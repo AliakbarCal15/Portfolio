@@ -21,7 +21,7 @@ const BackToTop = ({ visible }: BackToTopProps) => {
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.3 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 bg-neon-green text-dark p-3 rounded-full shadow-lg hover:scale-110 focus:outline-none z-50 hover:shadow-[0_0_15px_rgba(57,255,20,0.5)]"
+          className="fixed bottom-8 right-8 bg-neon-blue text-dark p-3 rounded-full shadow-lg hover:scale-110 focus:outline-none z-50"
           aria-label="Back to top"
         >
           <svg 

@@ -8,7 +8,7 @@ const skills = [
     name: "Java",
     description: "Core language for enterprise applications with extensive experience in Spring Boot and microservices.",
     progress: 95,
-    color: "neon-orange"
+    color: "neon-blue"
   },
   {
     icon: "fas fa-database",
@@ -22,7 +22,7 @@ const skills = [
     name: "Python",
     description: "Data processing, automation, and backend services with Flask and Django.",
     progress: 80,
-    color: "neon-green"
+    color: "neon-blue"
   },
   {
     icon: "fab fa-react",
@@ -36,14 +36,14 @@ const skills = [
     name: "Node.js",
     description: "Server-side JavaScript for scalable network applications and APIs.",
     progress: 85,
-    color: "neon-green"
+    color: "neon-blue"
   },
   {
     icon: "fas fa-cloud",
     name: "DevOps & Cloud",
     description: "CI/CD pipelines, Docker, AWS, and Azure deployment expertise.",
     progress: 80,
-    color: "neon-orange"
+    color: "neon-blue"
   }
 ];
 
@@ -52,30 +52,30 @@ const Skills = () => {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <div className="py-20 md:py-32 bg-gradient-section relative" ref={ref}>
+    <div className="py-20 md:py-32 bg-dark-lighter bg-opacity-20 relative" ref={ref}>
       <div className="container mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-center mb-16 relative inline-block">
           Technical Toolkit
-          <span className="absolute bottom-0 left-0 w-full h-1 bg-neon-green opacity-70"></span>
+          <span className="absolute bottom-0 left-0 w-full h-1 bg-neon-blue opacity-70"></span>
         </h2>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {skills.map((skill, index) => (
             <motion.div 
               key={skill.name}
-              className={`bg-gradient-card p-6 rounded-lg shadow-lg border border-dark-light hover:border-${skill.color} transition-all duration-300`}
+              className="bg-dark bg-opacity-40 p-6 rounded-lg shadow-lg border border-dark-light hover:border-neon-blue transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <div className="flex items-center mb-4">
-                <i className={`${skill.icon} text-${skill.color} text-3xl mr-3`}></i>
+                <i className={`${skill.icon} text-neon-blue text-3xl mr-3`}></i>
                 <h3 className="text-xl font-montserrat font-semibold">{skill.name}</h3>
               </div>
               <p className="text-light-darker mb-4 text-sm">{skill.description}</p>
-              <div className="skill-bar bg-dark-lighter">
+              <div className="h-2 w-full bg-dark-light rounded-full overflow-hidden">
                 <motion.div 
-                  className={`skill-bar-progress bg-${skill.color}`}
+                  className="h-full bg-neon-blue"
                   initial={{ width: 0 }}
                   animate={isInView ? { width: `${skill.progress}%` } : { width: 0 }}
                   transition={{ duration: 1, delay: 0.2 + index * 0.1 }}

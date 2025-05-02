@@ -6,19 +6,23 @@ const Hero = () => {
       <div className="absolute inset-0 opacity-20">
         <div className="absolute w-full h-full bg-dark opacity-70"></div>
         
-        {/* Motorcycle silhouette background */}
+        {/* Abstract tech background pattern */}
         <div 
           className="absolute bottom-0 right-0 w-full h-full opacity-10" 
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')",
+            backgroundImage: "url('https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')",
             backgroundSize: "cover", 
-            backgroundPosition: "right center",
-            filter: "grayscale(100%) contrast(200%)"
+            backgroundPosition: "center",
+            filter: "grayscale(30%) contrast(120%)"
           }}
         ></div>
         
-        {/* Tire marks */}
-        <div className="tire-mark absolute bottom-16 w-full h-16"></div>
+        {/* Geometric pattern */}
+        <div className="absolute bottom-0 w-full h-16 flex justify-center">
+          <svg width="100%" height="100%" viewBox="0 0 100 10" preserveAspectRatio="none">
+            <path d="M0,0 L100,0 L100,10 L0,10 Z" fill="#121212" fillOpacity="0.3"/>
+          </svg>
+        </div>
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
@@ -27,7 +31,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-neon-green font-montserrat text-lg sm:text-xl mb-4"
+            className="text-neon-blue font-montserrat text-lg sm:text-xl mb-4"
           >
             Hello World, I'm
           </motion.p>
@@ -39,7 +43,7 @@ const Hero = () => {
             className="text-4xl sm:text-5xl md:text-6xl font-montserrat font-bold text-light mb-4"
           >
             <span>Aliakbar —</span><br />
-            <span className="text-glow text-neon-green">Backend Developer & Code Mechanic</span>
+            <span className="text-neon-blue">Backend Developer</span>
           </motion.h1>
           
           <motion.p 
@@ -48,7 +52,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="text-xl sm:text-2xl text-light-darker mb-8"
           >
-            I architect scalable backend systems and chase the open road when off-screen.
+            Building backend systems that scale, with a focus on performance and reliability.
           </motion.p>
           
           <motion.div 
@@ -59,13 +63,13 @@ const Hero = () => {
           >
             <a 
               href="#projects" 
-              className="bg-transparent border-2 border-neon-green text-neon-green px-6 py-3 rounded-md font-medium hover:bg-neon-green hover:bg-opacity-10 transition-all duration-300"
+              className="bg-transparent border-2 border-neon-blue text-neon-blue px-6 py-3 rounded-md font-medium hover:bg-neon-blue hover:bg-opacity-10 transition-all duration-300"
             >
               View My Work
             </a>
             <a 
               href="#contact" 
-              className="bg-neon-green text-dark px-6 py-3 rounded-md font-medium hover:bg-opacity-90 transition-all duration-300 hover:shadow-[0_0_15px_rgba(57,255,20,0.5)]"
+              className="bg-neon-blue text-dark px-6 py-3 rounded-md font-medium hover:bg-opacity-90 transition-all duration-300"
             >
               Contact Me
             </a>

@@ -35,7 +35,7 @@ const Contact = () => {
     toast({
       title: "Message sent successfully!",
       description: "Thanks for reaching out. I'll get back to you soon.",
-      className: "bg-neon-green text-dark border-none",
+      className: "bg-neon-blue text-dark border-none",
     });
     
     form.reset();
@@ -46,7 +46,7 @@ const Contact = () => {
       <div className="container mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-center mb-16 relative inline-block">
           Let's Connect
-          <span className="absolute bottom-0 left-0 w-full h-1 bg-neon-green opacity-70"></span>
+          <span className="absolute bottom-0 left-0 w-full h-1 bg-neon-blue opacity-70"></span>
         </h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -57,15 +57,15 @@ const Contact = () => {
           >
             <h3 className="text-2xl font-montserrat font-semibold mb-6">Get In Touch</h3>
             <p className="text-light-darker mb-8">
-              Have a project in mind or want to discuss potential collaboration? Feel free to reach out through the form or via social platforms.
+              Have a project in mind or want to discuss potential collaboration? I'm always interested in new backend challenges and system architecture opportunities. Feel free to reach out through the form or via social platforms.
             </p>
             
             <div className="flex flex-col space-y-4 mb-8">
               <a href="mailto:info@aliakbar.dev" className="flex items-center group">
-                <div className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center mr-4 group-hover:bg-neon-green transition-colors">
-                  <i className="fas fa-envelope text-neon-green group-hover:text-dark transition-colors"></i>
+                <div className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center mr-4 group-hover:bg-neon-blue transition-colors">
+                  <i className="fas fa-envelope text-neon-blue group-hover:text-dark transition-colors"></i>
                 </div>
-                <span className="text-light group-hover:text-neon-green transition-colors">info@aliakbar.dev</span>
+                <span className="text-light group-hover:text-neon-blue transition-colors">info@aliakbar.dev</span>
               </a>
               
               <a href="#" className="flex items-center group">
@@ -77,14 +77,14 @@ const Contact = () => {
             </div>
             
             <div className="flex space-x-4">
-              <a href="#" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-green transition-colors group">
-                <i className="fab fa-github text-xl text-neon-green group-hover:text-dark transition-colors"></i>
+              <a href="#" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-blue transition-colors group">
+                <i className="fab fa-github text-xl text-neon-blue group-hover:text-dark transition-colors"></i>
               </a>
               <a href="#" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-blue transition-colors group">
                 <i className="fab fa-linkedin-in text-xl text-neon-blue group-hover:text-dark transition-colors"></i>
               </a>
-              <a href="#" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-orange transition-colors group">
-                <i className="fab fa-whatsapp text-xl text-neon-orange group-hover:text-dark transition-colors"></i>
+              <a href="#" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-blue transition-colors group">
+                <i className="fab fa-twitter text-xl text-neon-blue group-hover:text-dark transition-colors"></i>
               </a>
             </div>
           </motion.div>
@@ -96,14 +96,14 @@ const Contact = () => {
           >
             <form 
               onSubmit={form.handleSubmit(onSubmit)} 
-              className="bg-gradient-card p-8 rounded-lg shadow-lg border border-dark-light"
+              className="bg-dark bg-opacity-40 p-8 rounded-lg shadow-lg border border-dark-light"
             >
               <div className="mb-6">
                 <label htmlFor="name" className="block text-light mb-2">Name</label>
                 <input 
                   {...form.register("name")}
                   id="name" 
-                  className={`w-full px-4 py-3 bg-dark-lighter border rounded-md focus:outline-none focus:border-neon-green text-light ${
+                  className={`w-full px-4 py-3 bg-dark-lighter border rounded-md focus:outline-none focus:border-neon-blue text-light ${
                     form.formState.errors.name ? "border-red-500" : "border-dark-light"
                   }`}
                   placeholder="Your Name"
@@ -119,7 +119,7 @@ const Contact = () => {
                   {...form.register("email")}
                   id="email" 
                   type="email"
-                  className={`w-full px-4 py-3 bg-dark-lighter border rounded-md focus:outline-none focus:border-neon-green text-light ${
+                  className={`w-full px-4 py-3 bg-dark-lighter border rounded-md focus:outline-none focus:border-neon-blue text-light ${
                     form.formState.errors.email ? "border-red-500" : "border-dark-light"
                   }`}
                   placeholder="your.email@example.com"
@@ -135,7 +135,7 @@ const Contact = () => {
                   {...form.register("message")}
                   id="message" 
                   rows={4} 
-                  className={`w-full px-4 py-3 bg-dark-lighter border rounded-md focus:outline-none focus:border-neon-green text-light resize-none ${
+                  className={`w-full px-4 py-3 bg-dark-lighter border rounded-md focus:outline-none focus:border-neon-blue text-light resize-none ${
                     form.formState.errors.message ? "border-red-500" : "border-dark-light"
                   }`}
                   placeholder="Your message here..."
@@ -147,7 +147,7 @@ const Contact = () => {
               
               <button 
                 type="submit" 
-                className="w-full bg-neon-green text-dark py-3 rounded-md font-medium hover:bg-opacity-90 transition-all duration-300 hover:shadow-[0_0_15px_rgba(57,255,20,0.5)]"
+                className="w-full bg-neon-blue text-dark py-3 rounded-md font-medium hover:bg-opacity-90 transition-all duration-300"
               >
                 Send Message
               </button>

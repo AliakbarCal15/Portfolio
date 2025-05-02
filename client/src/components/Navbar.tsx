@@ -41,10 +41,10 @@ const Navbar = ({
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="#home" className="text-neon-green font-montserrat text-xl sm:text-2xl font-bold">
+        <a href="#home" className="text-neon-blue font-montserrat text-xl sm:text-2xl font-bold">
           <span className="relative">
-            Ali<span className="text-neon-orange">akbar</span>
-            <span className="absolute -bottom-1 left-0 bg-neon-green h-0.5 w-full opacity-70"></span>
+            Ali<span className="text-light">akbar</span>
+            <span className="absolute -bottom-1 left-0 bg-neon-blue h-0.5 w-full opacity-70"></span>
           </span>
         </a>
         
@@ -56,8 +56,8 @@ const Navbar = ({
               href={href}
               className={`transition-colors ${
                 activeSection === href.substring(1) 
-                  ? 'text-neon-green' 
-                  : 'text-light hover:text-neon-green'
+                  ? 'text-neon-blue' 
+                  : 'text-light hover:text-neon-blue'
               }`}
             >
               {label}
@@ -115,8 +115,8 @@ const Navbar = ({
                   href={href}
                   className={`py-2 transition-colors ${
                     activeSection === href.substring(1) 
-                      ? 'text-neon-green' 
-                      : 'text-light hover:text-neon-green'
+                      ? 'text-neon-blue' 
+                      : 'text-light hover:text-neon-blue'
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >

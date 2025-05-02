@@ -13,7 +13,7 @@ const About = () => {
 
   return (
     <div className="py-20 md:py-32 relative" ref={ref}>
-      <div className="tire-mark absolute top-0 w-full h-8"></div>
+      <div className="absolute top-0 w-full h-1 bg-dark-lighter"></div>
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center gap-12">
           <motion.div 
@@ -31,13 +31,18 @@ const About = () => {
               I'm a dedicated backend developer with a Master's degree in Computer Applications (MCA), passionate about building robust and scalable systems. My expertise lies in crafting efficient server-side solutions that form the backbone of modern applications.
             </p>
             <p className="text-light-darker mb-6 leading-relaxed">
-              When I'm not immersed in code, you'll find me exploring the open road on my motorcycle. The precision and mechanics of both coding and biking feed my dual passions — one digital, one mechanical, both requiring focus, maintenance, and a drive for excellence.
+              With over 6 years of professional experience, I've designed and implemented high-performance APIs, microservices, and data pipelines for a variety of industries. In my spare time, I enjoy motorbike rides for a fresh mind.
+            </p>
+            <p className="text-light-darker mb-6 leading-relaxed">
+              My career goal is to architect systems that solve complex business problems while maintaining code quality and scalability. I'm particularly interested in distributed systems, cloud architecture, and performance optimization.
             </p>
             <div className="flex flex-wrap gap-3 mb-8">
-              <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-green text-sm">Backend Development</span>
+              <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">Backend Development</span>
               <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">System Architecture</span>
-              <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-orange text-sm">Database Design</span>
-              <span className="px-4 py-2 bg-dark-lighter rounded-full text-light text-sm">API Integration</span>
+              <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">Database Design</span>
+              <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">API Integration</span>
+              <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">Microservices</span>
+              <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">Cloud Solutions</span>
             </div>
           </motion.div>
           
@@ -49,20 +54,20 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <div className="relative">
-              {/* Developer/Biker illustration */}
+              {/* Developer illustration */}
               <div className="w-full h-80 sm:h-96 rounded-lg overflow-hidden shadow-xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
-                  alt="Developer with motorcycle" 
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                  alt="Software Developer" 
                   className="w-full h-full object-cover rounded-lg"
                   style={{ filter: "grayscale(30%) contrast(110%) brightness(70%)" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-80"></div>
                 <div className="absolute bottom-0 left-0 w-full p-4 flex justify-center gap-6">
-                  <i className="fab fa-java text-3xl text-neon-orange"></i>
+                  <i className="fab fa-java text-3xl text-neon-blue"></i>
                   <i className="fas fa-database text-3xl text-neon-blue"></i>
-                  <i className="fas fa-server text-3xl text-neon-green"></i>
-                  <i className="fas fa-motorcycle text-3xl text-light"></i>
+                  <i className="fas fa-server text-3xl text-neon-blue"></i>
+                  <i className="fas fa-cloud text-3xl text-neon-blue"></i>
                 </div>
               </div>
               
@@ -78,10 +83,10 @@ const About = () => {
                   ease: "easeInOut"
                 }}
               >
-                <pre className="text-xs text-neon-green font-rajdhani">
+                <pre className="text-xs text-neon-blue font-rajdhani">
                   <code>{`function buildSystem() {
-  const passion = true;
-  return passion ? 
+  const expertise = true;
+  return expertise ? 
     'scalable_solution' : 
     refactor();
 }`}</code>
