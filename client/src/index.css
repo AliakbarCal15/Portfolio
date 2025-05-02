@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-inter antialiased bg-background text-foreground;
+    background: linear-gradient(to bottom, #0A192F, #121212);
+    background-attachment: fixed;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 15px rgba(57, 255, 20, 0.7);
+  }
+
+  .tire-mark {
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='15' viewBox='0 0 100 15' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5 H100 M0 10 H100' stroke='%23333' stroke-width='1' stroke-dasharray='3,3' fill='none'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    opacity: 0.1;
+  }
+
+  .bg-gradient-card {
+    background: linear-gradient(135deg, #121212 0%, #0A192F 100%);
+  }
+
+  .bg-gradient-section {
+    background: linear-gradient(to bottom, rgba(10, 25, 47, 0.9), rgba(18, 18, 18, 0.9));
+  }
+
+  .nav-active {
+    @apply border-l-2 border-neon-green text-neon-green pl-3;
+  }
+}
+
+/* Custom colors */
+:root {
+  --navy: #0A192F;
+  --navy-dark: #050E1A;
+  --dark: #121212;
+  --dark-lighter: #1E1E1E;
+  --dark-light: #333333;
+  --light: #F5F5F5;
+  --light-darker: #CCCCCC;
+  --neon-green: #39FF14;
+  --neon-blue: #0076FF;
+  --neon-orange: #FF5722;
+}
+
+/* Color classes */
+.text-navy { color: var(--navy); }
+.bg-navy { background-color: var(--navy); }
+.text-navy-dark { color: var(--navy-dark); }
+.bg-navy-dark { background-color: var(--navy-dark); }
+.text-dark { color: var(--dark); }
+.bg-dark { background-color: var(--dark); }
+.text-dark-lighter { color: var(--dark-lighter); }
+.bg-dark-lighter { background-color: var(--dark-lighter); }
+.text-dark-light { color: var(--dark-light); }
+.bg-dark-light { background-color: var(--dark-light); }
+.text-light { color: var(--light); }
+.bg-light { background-color: var(--light); }
+.text-light-darker { color: var(--light-darker); }
+.bg-light-darker { background-color: var(--light-darker); }
+.text-neon-green { color: var(--neon-green); }
+.bg-neon-green { background-color: var(--neon-green); }
+.text-neon-blue { color: var(--neon-blue); }
+.bg-neon-blue { background-color: var(--neon-blue); }
+.text-neon-orange { color: var(--neon-orange); }
+.bg-neon-orange { background-color: var(--neon-orange); }
+.border-neon-green { border-color: var(--neon-green); }
+.border-neon-blue { border-color: var(--neon-blue); }
+.border-neon-orange { border-color: var(--neon-orange); }
+.border-dark-light { border-color: var(--dark-light); }
+
+/* Font classes */
+.font-montserrat { font-family: 'Montserrat', sans-serif; }
+.font-inter { font-family: 'Inter', sans-serif; }
+.font-rajdhani { font-family: 'Rajdhani', sans-serif; }
+
+/* Skill bar */
+.skill-bar {
+  position: relative;
+  height: 10px;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.skill-bar-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 99px;
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.7);
+}

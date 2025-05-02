@@ -1,0 +1,162 @@
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { useToast } from "@/hooks/use-toast";
+
+const contactFormSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
+
+type ContactFormValues = z.infer<typeof contactFormSchema>;
+
+const Contact = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
+  const { toast } = useToast();
+  
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: ""
+    },
+  });
+
+  const onSubmit = (data: ContactFormValues) => {
+    // In a real app, this would send the form data to a backend
+    // For now, just show a success toast
+    toast({
+      title: "Message sent successfully!",
+      description: "Thanks for reaching out. I'll get back to you soon.",
+      className: "bg-neon-green text-dark border-none",
+    });
+    
+    form.reset();
+  };
+
+  return (
+    <div className="py-20 md:py-32 relative" ref={ref}>
+      <div className="container mx-auto px-6">
+        <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-center mb-16 relative inline-block">
+          Let's Connect
+          <span className="absolute bottom-0 left-0 w-full h-1 bg-neon-green opacity-70"></span>
+        </h2>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h3 className="text-2xl font-montserrat font-semibold mb-6">Get In Touch</h3>
+            <p className="text-light-darker mb-8">
+              Have a project in mind or want to discuss potential collaboration? Feel free to reach out through the form or via social platforms.
+            </p>
+            
+            <div className="flex flex-col space-y-4 mb-8">
+              <a href="mailto:info@aliakbar.dev" className="flex items-center group">
+                <div className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center mr-4 group-hover:bg-neon-green transition-colors">
+                  <i className="fas fa-envelope text-neon-green group-hover:text-dark transition-colors"></i>
+                </div>
+                <span className="text-light group-hover:text-neon-green transition-colors">info@aliakbar.dev</span>
+              </a>
+              
+              <a href="#" className="flex items-center group">
+                <div className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center mr-4 group-hover:bg-neon-blue transition-colors">
+                  <i className="fas fa-map-marker-alt text-neon-blue group-hover:text-dark transition-colors"></i>
+                </div>
+                <span className="text-light group-hover:text-neon-blue transition-colors">Bengaluru, India</span>
+              </a>
+            </div>
+            
+            <div className="flex space-x-4">
+              <a href="#" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-green transition-colors group">
+                <i className="fab fa-github text-xl text-neon-green group-hover:text-dark transition-colors"></i>
+              </a>
+              <a href="#" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-blue transition-colors group">
+                <i className="fab fa-linkedin-in text-xl text-neon-blue group-hover:text-dark transition-colors"></i>
+              </a>
+              <a href="#" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-orange transition-colors group">
+                <i className="fab fa-whatsapp text-xl text-neon-orange group-hover:text-dark transition-colors"></i>
+              </a>
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <form 
+              onSubmit={form.handleSubmit(onSubmit)} 
+              className="bg-gradient-card p-8 rounded-lg shadow-lg border border-dark-light"
+            >
+              <div className="mb-6">
+                <label htmlFor="name" className="block text-light mb-2">Name</label>
+                <input 
+                  {...form.register("name")}
+                  id="name" 
+                  className={`w-full px-4 py-3 bg-dark-lighter border rounded-md focus:outline-none focus:border-neon-green text-light ${
+                    form.formState.errors.name ? "border-red-500" : "border-dark-light"
+                  }`}
+                  placeholder="Your Name"
+                />
+                {form.formState.errors.name && (
+                  <p className="mt-1 text-red-500 text-xs">{form.formState.errors.name.message}</p>
+                )}
+              </div>
+              
+              <div className="mb-6">
+                <label htmlFor="email" className="block text-light mb-2">Email</label>
+                <input 
+                  {...form.register("email")}
+                  id="email" 
+                  type="email"
+                  className={`w-full px-4 py-3 bg-dark-lighter border rounded-md focus:outline-none focus:border-neon-green text-light ${
+                    form.formState.errors.email ? "border-red-500" : "border-dark-light"
+                  }`}
+                  placeholder="your.email@example.com"
+                />
+                {form.formState.errors.email && (
+                  <p className="mt-1 text-red-500 text-xs">{form.formState.errors.email.message}</p>
+                )}
+              </div>
+              
+              <div className="mb-6">
+                <label htmlFor="message" className="block text-light mb-2">Message</label>
+                <textarea 
+                  {...form.register("message")}
+                  id="message" 
+                  rows={4} 
+                  className={`w-full px-4 py-3 bg-dark-lighter border rounded-md focus:outline-none focus:border-neon-green text-light resize-none ${
+                    form.formState.errors.message ? "border-red-500" : "border-dark-light"
+                  }`}
+                  placeholder="Your message here..."
+                />
+                {form.formState.errors.message && (
+                  <p className="mt-1 text-red-500 text-xs">{form.formState.errors.message.message}</p>
+                )}
+              </div>
+              
+              <button 
+                type="submit" 
+                className="w-full bg-neon-green text-dark py-3 rounded-md font-medium hover:bg-opacity-90 transition-all duration-300 hover:shadow-[0_0_15px_rgba(57,255,20,0.5)]"
+              >
+                Send Message
+              </button>
+            </form>
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Contact;
