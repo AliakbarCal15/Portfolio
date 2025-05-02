@@ -75,7 +75,7 @@ const Hero = () => {
             </a>
             <a 
               href="/aliakbar_resume.pdf" 
-              download
+              download="Aliakbar_Calcuttawala_Resume.pdf"
               className="flex items-center gap-2 bg-dark-lighter text-light px-6 py-3 rounded-md font-medium hover:bg-dark-light transition-all duration-300"
             >
               <i className="fas fa-file-pdf"></i>
