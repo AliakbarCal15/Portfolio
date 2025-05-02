@@ -21,8 +21,8 @@ const FloatingSidebar = ({ activeSection }: FloatingSidebarProps) => {
           <a 
             key={href}
             href={href}
-            className={`text-light hover:text-neon-green transition-all duration-300 pl-3 py-1 border-l border-dark-light hover:border-neon-green ${
-              activeSection === section ? 'nav-active' : ''
+            className={`text-light hover:text-neon-blue transition-all duration-300 pl-3 py-1 border-l border-dark-light hover:border-neon-blue ${
+              activeSection === section ? 'text-neon-blue border-neon-blue' : ''
             }`}
             data-section={section}
           >
