@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import ResumeModal from './ResumeModal';
 
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   const variants = {
     hidden: { opacity: 0, y: 20 },
@@ -46,17 +48,19 @@ const About = () => {
             </div>
             
             <div className="mb-8">
-              <a 
-                href="/assets/resume/Aliakbar_Calcuttawala_Resume.pdf" 
-                download="Aliakbar_Calcuttawala_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button 
+                onClick={() => setIsResumeModalOpen(true)}
                 className="inline-flex items-center gap-2 bg-dark-lighter border border-dark-light hover:border-neon-blue px-5 py-2 rounded-md text-light text-sm hover:text-neon-blue transition-all duration-300"
               >
                 <i className="fas fa-file-pdf text-neon-blue"></i>
                 View Full Resume
-              </a>
+              </button>
             </div>
+            
+            <ResumeModal 
+              isOpen={isResumeModalOpen} 
+              onClose={() => setIsResumeModalOpen(false)} 
+            />
           </motion.div>
           
           <motion.div 

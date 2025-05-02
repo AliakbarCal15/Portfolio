@@ -74,10 +74,8 @@ const Hero = () => {
               Contact Me
             </a>
             <a 
-              href="/assets/resume/Aliakbar_Calcuttawala_Resume.pdf" 
-              download="Aliakbar_Calcuttawala_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/aliakbar_resume.pdf" 
+              download
               className="flex items-center gap-2 bg-dark-lighter text-light px-6 py-3 rounded-md font-medium hover:bg-dark-light transition-all duration-300"
             >
               <i className="fas fa-file-pdf"></i>
