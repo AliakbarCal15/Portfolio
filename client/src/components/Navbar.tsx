@@ -43,7 +43,7 @@ const Navbar = ({
       <div className="container mx-auto px-4 flex justify-between items-center">
         <a href="#home" className="text-neon-blue font-montserrat text-xl sm:text-2xl font-bold">
           <span className="relative">
-            Ali<span className="text-light">akbar</span>
+            Aliakbar <span className="text-light">Calcuttawala</span>
             <span className="absolute -bottom-1 left-0 bg-neon-blue h-0.5 w-full opacity-70"></span>
           </span>
         </a>
