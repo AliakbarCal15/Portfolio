@@ -6,9 +6,9 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <a href="#home" className="text-neon-blue font-montserrat text-xl font-bold">
-              Ali<span className="text-light">akbar</span>
+              Aliakbar <span className="text-light">Calcuttawala</span>
             </a>
-            <p className="text-light-darker mt-2 text-sm">© {new Date().getFullYear()} Aliakbar. All rights reserved.</p>
+            <p className="text-light-darker mt-2 text-sm">© {new Date().getFullYear()} Aliakbar Calcuttawala. All rights reserved.</p>
           </div>
           
           <div>
@@ -16,14 +16,14 @@ const Footer = () => {
               "Let's build something impactful together."
             </p>
             <div className="flex justify-center md:justify-end space-x-4">
-              <a href="#" className="text-light-darker hover:text-neon-blue transition-colors">
+              <a href="https://github.com/AliakbarCalcuttawala" target="_blank" rel="noopener noreferrer" className="text-light-darker hover:text-neon-blue transition-colors">
                 <i className="fab fa-github text-xl"></i>
               </a>
-              <a href="#" className="text-light-darker hover:text-neon-blue transition-colors">
+              <a href="https://www.linkedin.com/in/aliakbar-calcuttawala/" target="_blank" rel="noopener noreferrer" className="text-light-darker hover:text-neon-blue transition-colors">
                 <i className="fab fa-linkedin-in text-xl"></i>
               </a>
-              <a href="#" className="text-light-darker hover:text-neon-blue transition-colors">
-                <i className="fab fa-twitter text-xl"></i>
+              <a href="http://wa.me/+919156770832" target="_blank" rel="noopener noreferrer" className="text-light-darker hover:text-neon-blue transition-colors">
+                <i className="fab fa-whatsapp text-xl"></i>
               </a>
             </div>
           </div>

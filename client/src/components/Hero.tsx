@@ -42,8 +42,8 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-4xl sm:text-5xl md:text-6xl font-montserrat font-bold text-light mb-4"
           >
-            <span>Aliakbar —</span><br />
-            <span className="text-neon-blue">Backend Developer</span>
+            <span>Aliakbar Calcuttawala</span><br />
+            <span className="text-neon-blue">Full-Stack Developer</span>
           </motion.h1>
           
           <motion.p 
@@ -52,7 +52,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="text-xl sm:text-2xl text-light-darker mb-8"
           >
-            Building backend systems that scale, with a focus on performance and reliability.
+            Dynamic developer specializing in MERN stack, RESTful APIs, and scalable backend systems
           </motion.p>
           
           <motion.div 

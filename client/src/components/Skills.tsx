@@ -4,45 +4,45 @@ import { useRef } from 'react';
 
 const skills = [
   {
-    icon: "fab fa-java",
-    name: "Java",
-    description: "Core language for enterprise applications with extensive experience in Spring Boot and microservices.",
+    icon: "fab fa-node-js",
+    name: "Backend Development",
+    description: "Node.js, Express.js, and MongoDB for scalable backend services, REST API design, and data-driven applications.",
     progress: 95,
     color: "neon-blue"
   },
   {
-    icon: "fas fa-database",
-    name: "MySQL & MongoDB",
-    description: "Database design, optimization, and management for both relational and NoSQL platforms.",
-    progress: 90,
-    color: "neon-blue"
-  },
-  {
-    icon: "fab fa-python",
-    name: "Python",
-    description: "Data processing, automation, and backend services with Flask and Django.",
-    progress: 80,
-    color: "neon-blue"
-  },
-  {
     icon: "fab fa-react",
-    name: "React",
-    description: "Frontend development with React and related ecosystem tools for responsive UI.",
-    progress: 75,
-    color: "neon-blue"
-  },
-  {
-    icon: "fab fa-node-js",
-    name: "Node.js",
-    description: "Server-side JavaScript for scalable network applications and APIs.",
+    name: "Frontend Development",
+    description: "React.js with Material UI for building responsive and interactive user interfaces with modern design patterns.",
     progress: 85,
     color: "neon-blue"
   },
   {
-    icon: "fas fa-cloud",
-    name: "DevOps & Cloud",
-    description: "CI/CD pipelines, Docker, AWS, and Azure deployment expertise.",
+    icon: "fas fa-database",
+    name: "Database Management",
+    description: "SQL (MySQL) and NoSQL (MongoDB) database design, optimization, and integration with application layers.",
+    progress: 90,
+    color: "neon-blue"
+  },
+  {
+    icon: "fas fa-brain",
+    name: "Data Analytics & ML",
+    description: "Exploratory Data Analysis, Regression, Natural Language Processing, and predictive modeling techniques.",
     progress: 80,
+    color: "neon-blue"
+  },
+  {
+    icon: "fas fa-cloud",
+    name: "Cloud Deployment",
+    description: "AWS and Heroku deployment, configuration, and management of web applications and services.",
+    progress: 82,
+    color: "neon-blue"
+  },
+  {
+    icon: "fas fa-server",
+    name: "DevOps",
+    description: "Apache/Nginx server configuration, Git version control, and Agile methodologies for efficient development workflows.",
+    progress: 78,
     color: "neon-blue"
   }
 ];

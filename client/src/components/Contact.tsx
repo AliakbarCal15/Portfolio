@@ -57,34 +57,41 @@ const Contact = () => {
           >
             <h3 className="text-2xl font-montserrat font-semibold mb-6">Get In Touch</h3>
             <p className="text-light-darker mb-8">
-              Have a project in mind or want to discuss potential collaboration? I'm always interested in new backend challenges and system architecture opportunities. Feel free to reach out through the form or via social platforms.
+              Looking for a dynamic backend or full-stack developer? I'm open to remote roles and exciting collaborations. Feel free to reach out through the form or via any of my contact channels below.
             </p>
             
             <div className="flex flex-col space-y-4 mb-8">
-              <a href="mailto:info@aliakbar.dev" className="flex items-center group">
+              <a href="mailto:aliakbarcal15@gmail.com" className="flex items-center group">
                 <div className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center mr-4 group-hover:bg-neon-blue transition-colors">
                   <i className="fas fa-envelope text-neon-blue group-hover:text-dark transition-colors"></i>
                 </div>
-                <span className="text-light group-hover:text-neon-blue transition-colors">info@aliakbar.dev</span>
+                <span className="text-light group-hover:text-neon-blue transition-colors">aliakbarcal15@gmail.com</span>
               </a>
               
+              <a href="tel:+919156770832" className="flex items-center group">
+                <div className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center mr-4 group-hover:bg-neon-blue transition-colors">
+                  <i className="fas fa-phone text-neon-blue group-hover:text-dark transition-colors"></i>
+                </div>
+                <span className="text-light group-hover:text-neon-blue transition-colors">+91 9156770832</span>
+              </a>
+
               <a href="#" className="flex items-center group">
                 <div className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center mr-4 group-hover:bg-neon-blue transition-colors">
                   <i className="fas fa-map-marker-alt text-neon-blue group-hover:text-dark transition-colors"></i>
                 </div>
-                <span className="text-light group-hover:text-neon-blue transition-colors">Bengaluru, India</span>
+                <span className="text-light group-hover:text-neon-blue transition-colors">Pune, Maharashtra, India 411011</span>
               </a>
             </div>
             
             <div className="flex space-x-4">
-              <a href="#" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-blue transition-colors group">
+              <a href="https://github.com/AliakbarCalcuttawala" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-blue transition-colors group">
                 <i className="fab fa-github text-xl text-neon-blue group-hover:text-dark transition-colors"></i>
               </a>
-              <a href="#" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-blue transition-colors group">
+              <a href="https://www.linkedin.com/in/aliakbar-calcuttawala/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-blue transition-colors group">
                 <i className="fab fa-linkedin-in text-xl text-neon-blue group-hover:text-dark transition-colors"></i>
               </a>
-              <a href="#" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-blue transition-colors group">
-                <i className="fab fa-twitter text-xl text-neon-blue group-hover:text-dark transition-colors"></i>
+              <a href="http://wa.me/+919156770832" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-blue transition-colors group">
+                <i className="fab fa-whatsapp text-xl text-neon-blue group-hover:text-dark transition-colors"></i>
               </a>
             </div>
           </motion.div>

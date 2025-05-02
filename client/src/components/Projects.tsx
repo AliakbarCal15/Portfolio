@@ -4,28 +4,40 @@ import { useRef } from 'react';
 
 const projects = [
   {
-    title: "E-commerce Microservices",
-    description: "A scalable backend architecture for e-commerce platforms using Java Spring Boot, MongoDB, and RabbitMQ.",
-    image: "https://images.unsplash.com/photo-1584949091598-c31daaaa4aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    tags: ["Java", "Spring", "MongoDB"],
+    title: "Blog Management System",
+    description: "Designed and deployed a full-stack blog management platform with user authentication and secure content operations.",
+    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    tags: ["MERN Stack", "Authentication", "Content Management"],
     github: "#",
-    demo: "#"
+    demo: "#",
+    period: "Jan 2025 - Feb 2025"
   },
   {
-    title: "Analytics Dashboard",
-    description: "Real-time analytics dashboard for monitoring system performance using Node.js, Socket.IO, and D3.js.",
+    title: "Data Visualization Tool",
+    description: "Built a dynamic data visualization platform enabling users to upload datasets and generate real-time charts.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    tags: ["Node.js", "Socket.IO", "D3.js"],
+    tags: ["MERN Stack", "Chart.js", "Recharts"],
     github: "#",
-    demo: "#"
+    demo: "#",
+    period: "Oct 2024 - Dec 2024"
   },
   {
-    title: "Data Processing Pipeline",
-    description: "High-performance data processing pipeline for real-time analytics using Python, Kafka, and PostgreSQL.",
-    image: "https://images.unsplash.com/photo-1509966756634-9c23dd6e6815?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    tags: ["Python", "Kafka", "PostgreSQL"],
+    title: "File Sharing Webpage",
+    description: "Developed a secure file-sharing application that generated unique download links for uploaded files.",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    tags: ["MERN Stack", "File Handling", "Security"],
     github: "#",
-    demo: "#"
+    demo: "#",
+    period: "Aug 2024"
+  },
+  {
+    title: "Conversion Doctor",
+    description: "Co-developed a cloud-hosted application facilitating file format conversions for images, audio, and documents.",
+    image: "https://images.unsplash.com/photo-1566241440091-ec10de8db2e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    tags: ["Flask", "Pillow", "Pydub", "FFmpeg"],
+    github: "#",
+    demo: "#",
+    period: "May 2023"
   }
 ];
 
@@ -41,7 +53,7 @@ const Projects = () => {
           <span className="absolute bottom-0 left-0 w-full h-1 bg-neon-blue opacity-70"></span>
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <motion.div 
               key={project.title}
@@ -58,9 +70,14 @@ const Projects = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-montserrat font-semibold mb-2 group-hover:text-neon-blue transition-colors">
-                  {project.title}
-                </h3>
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-xl font-montserrat font-semibold group-hover:text-neon-blue transition-colors">
+                    {project.title}
+                  </h3>
+                  <span className="text-xs text-neon-blue bg-dark-lighter px-2 py-1 rounded">
+                    {project.period}
+                  </span>
+                </div>
                 <p className="text-light-darker mb-4 text-sm">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map(tag => (

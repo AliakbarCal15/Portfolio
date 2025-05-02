@@ -28,21 +28,21 @@ const About = () => {
               <span className="absolute bottom-0 left-0 w-full h-1 bg-neon-blue opacity-70"></span>
             </h2>
             <p className="text-light-darker mb-6 leading-relaxed">
-              I'm a dedicated backend developer with a Master's degree in Computer Applications (MCA), passionate about building robust and scalable systems. My expertise lies in crafting efficient server-side solutions that form the backbone of modern applications.
+              I'm a dynamic Full-Stack Developer with expertise in MERN stack and data science, currently pursuing a Master's degree in Computer Applications (MCA) at MIT College of Management in Pune. I'm passionate about building scalable server-side architectures and integrating robust backend services with interactive front-end solutions.
             </p>
             <p className="text-light-darker mb-6 leading-relaxed">
-              With over 6 years of professional experience, I've designed and implemented high-performance APIs, microservices, and data pipelines for a variety of industries. In my spare time, I enjoy motorbike rides for a fresh mind.
+              Currently working as a Software Developer at Numetry Technology in Pune, I specialize in developing and securing RESTful APIs while optimizing backend systems using MERN stack technologies. Previously, I gained experience as a Data Analyst Intern at Next24Tech, where I built predictive models and recommendation systems.
             </p>
             <p className="text-light-darker mb-6 leading-relaxed">
-              My career goal is to architect systems that solve complex business problems while maintaining code quality and scalability. I'm particularly interested in distributed systems, cloud architecture, and performance optimization.
+              I hold a Bachelor's degree in Computer Science from Savitribai Phule Pune University with 84% marks, and I'm committed to leveraging my technical skills to create impactful digital products in challenging roles.
             </p>
             <div className="flex flex-wrap gap-3 mb-8">
-              <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">Backend Development</span>
-              <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">System Architecture</span>
+              <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">MERN Stack</span>
+              <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">RESTful APIs</span>
               <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">Database Design</span>
-              <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">API Integration</span>
-              <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">Microservices</span>
-              <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">Cloud Solutions</span>
+              <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">Machine Learning</span>
+              <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">Data Analytics</span>
+              <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">Cloud Deployment</span>
             </div>
           </motion.div>
           
@@ -64,9 +64,9 @@ const About = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-80"></div>
                 <div className="absolute bottom-0 left-0 w-full p-4 flex justify-center gap-6">
-                  <i className="fab fa-java text-3xl text-neon-blue"></i>
+                  <i className="fab fa-react text-3xl text-neon-blue"></i>
+                  <i className="fab fa-node-js text-3xl text-neon-blue"></i>
                   <i className="fas fa-database text-3xl text-neon-blue"></i>
-                  <i className="fas fa-server text-3xl text-neon-blue"></i>
                   <i className="fas fa-cloud text-3xl text-neon-blue"></i>
                 </div>
               </div>
