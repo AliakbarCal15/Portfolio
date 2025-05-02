@@ -36,13 +36,26 @@ const About = () => {
             <p className="text-light-darker mb-6 leading-relaxed">
               I hold a Bachelor's degree in Computer Science from Savitribai Phule Pune University with 84% marks, and I'm committed to leveraging my technical skills to create impactful digital products in challenging roles.
             </p>
-            <div className="flex flex-wrap gap-3 mb-8">
+            <div className="flex flex-wrap gap-3 mb-6">
               <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">MERN Stack</span>
               <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">RESTful APIs</span>
               <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">Database Design</span>
               <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">Machine Learning</span>
               <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">Data Analytics</span>
               <span className="px-4 py-2 bg-dark-lighter rounded-full text-neon-blue text-sm">Cloud Deployment</span>
+            </div>
+            
+            <div className="mb-8">
+              <a 
+                href="/assets/resume/Aliakbar_Calcuttawala_Resume.pdf" 
+                download="Aliakbar_Calcuttawala_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-dark-lighter border border-dark-light hover:border-neon-blue px-5 py-2 rounded-md text-light text-sm hover:text-neon-blue transition-all duration-300"
+              >
+                <i className="fas fa-file-pdf text-neon-blue"></i>
+                View Full Resume
+              </a>
             </div>
           </motion.div>
           
