@@ -1,0 +1,59 @@
+Build a modern, fully responsive, visually attractive portfolio website using **React**, **Vite**, and **Tailwind CSS** (no backend or database).
+
+The website represents **Aliakbar**, a backend-focused software developer who is also a passionate biker. The design should be professional, clean, and slightly edgy with dark mode aesthetics. Subtle biker-themed elements like tire marks, helmet icons, or motorbike silhouettes should be used **only as visual enhancements**, not overpowering the professional tone.
+
+The personality to convey is:
+“A skilled backend developer who builds solid systems and rides hard — code by day, roads by night.”
+
+Design Guidelines:
+- Use **dark theme** with navy/black gradients, and **vibrant highlight colors** (e.g., neon green, orange, or deep blue).
+- Use **Tailwind CSS utility classes** for layout, spacing, typography, colors, responsiveness.
+- Integrate **Framer Motion** or Tailwind transitions for animations.
+- Do not use any backend or form submission logic — frontend only.
+- Ensure **fast loading, clean folder structure**, and **mobile-first responsive** design.
+
+Include the following sections/pages:
+
+1. **Hero Section** (Main Landing):
+   - Full-screen intro with:
+     - Headline: “Hi, I'm Aliakbar — Backend Developer & Code Mechanic”
+     - Subtext: “I architect scalable backend systems and chase the open road when off-screen.”
+     - Two buttons: “View My Work” & “Contact Me”
+   - Background should have a subtle motorcycle overlay or dynamic gradient.
+   - Animated entrance for text and buttons.
+
+2. **About Me**:
+   - Write a short paragraph introducing Aliakbar’s education (MCA), skills, passion for backend development, and love for biking.
+   - Use a responsive layout with text and a developer-themed illustration or biker photo placeholder.
+   - Add icons for tech & biking, arranged in a visually balanced layout.
+
+3. **Skills Section**:
+   - Display a list of technical skills like Java, MySQL, MongoDB, Python, React, Node.js using **animated cards or progress bars**.
+   - Use modern icons and hover animations.
+   - Optional layout: cards styled like tools in a biker’s toolkit.
+
+4. **Projects**:
+   - Showcase at least 3 project cards with:
+     - Title, description, GitHub button, Live Demo button
+     - Hover animation
+   - Responsive grid layout with smooth transitions
+
+5. **Certifications**:
+   - Clean grid showing badges/logos with short descriptions
+   - Add hover effects and use placeholder images if needed
+
+6. **Contact Section**:
+   - Include a contact form with name, email, and message
+   - No backend handling; simply validate fields and show a success alert on submit
+   - Add social media icons (GitHub, LinkedIn, WhatsApp) with hover glow effect
+
+7. **Footer**:
+   - Clean dark footer with © Aliakbar and social links
+   - Quote or fun line: “Let's connect — for your next backend build or weekend ride.”
+
+Functional Requirements:
+- Sticky navbar with scroll-to-section and active highlight
+- Back-to-top button with smooth animation
+- All pages/components must be responsive
+- Avoid using component libraries (e.g., MUI or Bootstrap)
+- Folder structure should follow Vite standard (src/components, etc.)
