@@ -122,7 +122,7 @@ const Contact = () => {
               </a>
             </div>
             
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap gap-4">
               <a href="https://github.com/AliakbarCalcuttawala" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-blue transition-colors group">
                 <i className="fab fa-github text-xl text-neon-blue group-hover:text-dark transition-colors"></i>
               </a>
@@ -131,6 +131,18 @@ const Contact = () => {
               </a>
               <a href="http://wa.me/+919156770832" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-blue transition-colors group">
                 <i className="fab fa-whatsapp text-xl text-neon-blue group-hover:text-dark transition-colors"></i>
+              </a>
+              <a href="https://twitter.com/techguyalikhan" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-blue transition-colors group">
+                <i className="fab fa-twitter text-xl text-neon-blue group-hover:text-dark transition-colors"></i>
+              </a>
+              <a href="https://www.instagram.com/aliak_calc/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-blue transition-colors group">
+                <i className="fab fa-instagram text-xl text-neon-blue group-hover:text-dark transition-colors"></i>
+              </a>
+              <a href="https://medium.com/@aliakbarcalcuttawala" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-blue transition-colors group">
+                <i className="fab fa-medium-m text-xl text-neon-blue group-hover:text-dark transition-colors"></i>
+              </a>
+              <a href="https://dev.to/aliakbarcalcuttawala" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-dark-lighter flex items-center justify-center hover:bg-neon-blue transition-colors group">
+                <i className="fab fa-dev text-xl text-neon-blue group-hover:text-dark transition-colors"></i>
               </a>
             </div>
           </motion.div>
