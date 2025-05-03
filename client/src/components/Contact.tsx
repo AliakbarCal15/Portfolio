@@ -1,12 +1,9 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
-import emailjs from '@emailjs/browser';
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -22,22 +19,6 @@ const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  // Initialize EmailJS with hardcoded PUBLIC_KEY (This is safe as it's a public key)
-  useEffect(() => {
-    // Direct initialization with the actual public key
-    // Using the PUBLIC_KEY directly since it's meant to be exposed on the client-side
-    const PUBLIC_KEY = "wKAnlxsUGEWW_e_dM"; // Replace with actual public key
-    console.log('Initializing EmailJS with direct configuration');
-    
-    try {
-      // Initialize EmailJS
-      emailjs.init(PUBLIC_KEY);
-      console.log('EmailJS initialized successfully');
-    } catch (err) {
-      console.error('Error initializing EmailJS:', err);
-    }
-  }, []);
-  
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -51,26 +32,25 @@ const Contact = () => {
     try {
       setIsSubmitting(true);
       
-      // Prepare the template parameters for EmailJS
-      const templateParams = {
-        from_name: data.name,
-        from_email: data.email,
-        message: data.message,
-        to_name: 'Aliakbar', // Your name (recipient)
-        reply_to: data.email
-      };
+      // Send email through our backend API
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          message: data.message,
+        }),
+      });
       
-      // Using direct EmailJS configuration with hardcoded values
-      const SERVICE_ID = "service_jk7r9fj";  // Replace with your actual service ID
-      const TEMPLATE_ID = "template_u0sjgbf"; // Replace with your actual template ID
-      const PUBLIC_KEY = "wKAnlxsUGEWW_e_dM"; // Same as the one used for initialization
+      // Parse the JSON response
+      const result = await response.json();
       
-      // Send the email using EmailJS
-      await emailjs.send(
-        SERVICE_ID,
-        TEMPLATE_ID,
-        templateParams
-      );
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
       
       // Show success toast
       toast({
