@@ -90,15 +90,15 @@
   }
 
   .bg-gradient-card {
-    background: linear-gradient(135deg, #121212 0%, #0A192F 100%);
+    background: linear-gradient(135deg, #fff8c4 0%, #fff2a8 100%);
   }
 
   .bg-gradient-section {
-    background: linear-gradient(to bottom, rgba(10, 25, 47, 0.9), rgba(18, 18, 18, 0.9));
+    background: linear-gradient(to bottom, rgba(255, 248, 196, 0.7), rgba(253, 246, 178, 0.7));
   }
 
   .nav-active {
-    @apply border-l-2 border-neon-blue text-neon-blue pl-3;
+    @apply border-l-2 border-yellow-500 text-yellow-600 pl-3;
   }
 }
 
@@ -116,6 +116,9 @@
   --neon-green: #39FF14;
   --neon-blue: #0076FF;
   --neon-orange: #FF5722;
+  --yellow-light: #fffbea;
+  --yellow-medium: #fdf6b2;
+  --yellow-dark: #eab308;
   
   /* Light mode variables */
   --background-light: var(--light);
@@ -154,6 +157,15 @@
 .border-neon-blue { border-color: var(--neon-blue); }
 .border-neon-orange { border-color: var(--neon-orange); }
 .border-dark-light { border-color: var(--dark-light); }
+.text-yellow-light { color: var(--yellow-light); }
+.bg-yellow-light { background-color: var(--yellow-light); }
+.text-yellow-medium { color: var(--yellow-medium); }
+.bg-yellow-medium { background-color: var(--yellow-medium); }
+.text-yellow-dark { color: var(--yellow-dark); }
+.bg-yellow-dark { background-color: var(--yellow-dark); }
+.border-yellow-light { border-color: var(--yellow-light); }
+.border-yellow-medium { border-color: var(--yellow-medium); }
+.border-yellow-dark { border-color: var(--yellow-dark); }
 
 /* Font classes */
 .font-montserrat { font-family: 'Montserrat', sans-serif; }
@@ -174,5 +186,14 @@
   left: 0;
   height: 100%;
   border-radius: 99px;
-  box-shadow: 0 0 10px rgba(0, 118, 255, 0.7);
+  box-shadow: 0 0 10px rgba(234, 179, 8, 0.5);
+}
+
+/* Yellow theme button */
+.btn-yellow {
+  @apply bg-yellow-400 hover:bg-yellow-500 text-[#1a1a1a] font-medium rounded-md px-5 py-2.5 transition-all duration-300 shadow-md hover:shadow-lg focus:ring-2 focus:ring-yellow-300 focus:outline-none;
+}
+
+.btn-yellow-outline {
+  @apply bg-transparent hover:bg-yellow-400/20 text-[#333333] font-medium rounded-md px-5 py-2.5 transition-all duration-300 border border-yellow-400 hover:border-yellow-500 focus:ring-2 focus:ring-yellow-300 focus:outline-none;
 }
