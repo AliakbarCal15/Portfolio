@@ -73,25 +73,32 @@ const HomePage = () => {
 
 // Main App component with routing
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  // Store theme preference in local storage
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    // Check if there's a theme preference in localStorage
+    const savedTheme = localStorage.getItem('theme');
+    // If theme preference exists, use it; otherwise default to dark
+    return savedTheme ? savedTheme === 'dark' : true;
+  });
   
   useEffect(() => {
-    // Apply dark mode class to document
+    // Apply dark mode class to document root element
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
+    
+    // Save theme preference to localStorage
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
   }, [isDarkMode]);
   
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
-    // Save preference to localStorage
-    localStorage.setItem('theme', !isDarkMode ? 'dark' : 'light');
   };
 
   return (
-    <div className="min-h-screen bg-light dark:bg-navy text-dark dark:text-light">
+    <div className="min-h-screen bg-light dark:bg-navy text-dark dark:text-light transition-colors duration-300">
       <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <Switch>
         <Route path="/" component={HomePage} />

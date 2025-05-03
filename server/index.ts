@@ -40,10 +40,24 @@ app.use((req, res, next) => {
 (async () => {
   const server = await registerRoutes(app);
 
-  // Add middleware to serve static files from the public folder
+  // Add middleware to serve static files from the public folder with proper MIME types
   const publicPath = path.resolve(import.meta.dirname, '..', 'public');
-  app.use(express.static(publicPath));
-  log(`Serving static files from: ${publicPath}`);
+  app.use(express.static(publicPath, {
+    setHeaders: (res, filePath) => {
+      // Set correct MIME types for PDF files
+      if (filePath.endsWith('.pdf')) {
+        res.setHeader('Content-Type', 'application/pdf');
+      }
+      // Set Cache-Control headers for better performance
+      if (filePath.endsWith('.jpg') || filePath.endsWith('.jpeg') || 
+          filePath.endsWith('.png') || filePath.endsWith('.gif')) {
+        res.setHeader('Cache-Control', 'public, max-age=86400'); // 1 day
+      } else if (filePath.endsWith('.pdf')) {
+        res.setHeader('Cache-Control', 'public, max-age=86400'); // 1 day
+      }
+    }
+  }));
+  log(`Serving static files from: ${publicPath} with enhanced MIME type support`);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
