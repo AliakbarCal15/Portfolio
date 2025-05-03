@@ -22,17 +22,20 @@ const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  // Initialize EmailJS with debugging enabled
+  // Initialize EmailJS with hardcoded PUBLIC_KEY (This is safe as it's a public key)
   useEffect(() => {
-    // Log environment variables (sanitized) for debugging
-    console.log('EmailJS Config:', {
-      serviceIDAvailable: !!import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      templateIDAvailable: !!import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      publicKeyAvailable: !!import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-    });
+    // Direct initialization with the actual public key
+    // Using the PUBLIC_KEY directly since it's meant to be exposed on the client-side
+    const PUBLIC_KEY = "wKAnlxsUGEWW_e_dM"; // Replace with actual public key
+    console.log('Initializing EmailJS with direct configuration');
     
-    // Enable debug mode for EmailJS
-    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '', { debug: true });
+    try {
+      // Initialize EmailJS
+      emailjs.init(PUBLIC_KEY);
+      console.log('EmailJS initialized successfully');
+    } catch (err) {
+      console.error('Error initializing EmailJS:', err);
+    }
   }, []);
   
   const form = useForm<ContactFormValues>({
@@ -57,12 +60,16 @@ const Contact = () => {
         reply_to: data.email
       };
       
+      // Using direct EmailJS configuration with hardcoded values
+      const SERVICE_ID = "service_jk7r9fj";  // Replace with your actual service ID
+      const TEMPLATE_ID = "template_u0sjgbf"; // Replace with your actual template ID
+      const PUBLIC_KEY = "wKAnlxsUGEWW_e_dM"; // Same as the one used for initialization
+      
       // Send the email using EmailJS
       await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID || '',
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '',
-        templateParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || ''
+        SERVICE_ID,
+        TEMPLATE_ID,
+        templateParams
       );
       
       // Show success toast
