@@ -112,7 +112,7 @@ const About = () => {
               {/* Developer Image */}
               <div className="w-full h-80 sm:h-96 rounded-lg overflow-hidden shadow-xl relative">
                 <img
-                  src="/photo2.jpg"
+                  src={`/photo2.jpg?v=${Date.now()}`}
                   alt="Aliakbar Calcuttawala"
                   loading="lazy"
                   onError={(e) => (e.currentTarget.src = "/fallback.jpg")}

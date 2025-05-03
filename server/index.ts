@@ -48,12 +48,15 @@ app.use((req, res, next) => {
       if (filePath.endsWith('.pdf')) {
         res.setHeader('Content-Type', 'application/pdf');
       }
-      // Set Cache-Control headers for better performance
+      
+      // Set Cache-Control headers with no-cache for images to prevent caching issues
       if (filePath.endsWith('.jpg') || filePath.endsWith('.jpeg') || 
           filePath.endsWith('.png') || filePath.endsWith('.gif')) {
-        res.setHeader('Cache-Control', 'public, max-age=86400'); // 1 day
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+        res.setHeader('Expires', '0');
       } else if (filePath.endsWith('.pdf')) {
-        res.setHeader('Cache-Control', 'public, max-age=86400'); // 1 day
+        res.setHeader('Cache-Control', 'public, max-age=3600'); // 1 hour
       }
     }
   }));
