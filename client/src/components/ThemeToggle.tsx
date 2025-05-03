@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface ThemeToggleProps {
@@ -22,7 +21,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ isDarkMode, toggleTheme }) =>
     <motion.button
       onClick={handleClick}
       aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-      className="fixed top-5 right-5 z-50 p-2 bg-white dark:bg-dark-lighter rounded-full shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+      className="fixed top-4 right-4 md:top-6 md:right-6 z-50 p-3 bg-white dark:bg-dark-lighter rounded-full shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
@@ -31,20 +30,20 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ isDarkMode, toggleTheme }) =>
         {isAnimating && (
           <motion.span
             key="ripple"
-            initial={{ width: "0%", height: "0%", opacity: 0.5, x: "50%", y: "50%" }}
+            initial={{ width: "0%", height: "0%", opacity: 0.7 }}
             animate={{ 
-              width: "300%", 
-              height: "300%", 
+              width: "400%", 
+              height: "400%", 
               opacity: 0,
-              x: "-50%", 
-              y: "-50%" 
             }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.8 }}
             style={{ 
               position: "absolute", 
               borderRadius: "50%", 
-              backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.3)" : "rgba(0, 0, 0, 0.2)",
+              background: isDarkMode 
+                ? "radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%)" 
+                : "radial-gradient(circle, rgba(99,102,241,0.7) 0%, rgba(99,102,241,0) 70%)",
               left: "50%",
               top: "50%",
               transform: "translate(-50%, -50%)",
