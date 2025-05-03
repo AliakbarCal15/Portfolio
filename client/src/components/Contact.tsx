@@ -1,10 +1,10 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
-import emailjs from '@emailjs/browser';
+import { useLocation } from 'wouter';
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -29,50 +29,22 @@ const Contact = () => {
     },
   });
 
-  // Initialize EmailJS with the most recent PUBLIC_KEY
-  useEffect(() => {
-    try {
-      // Directly initialize EmailJS
-      emailjs.init("5I5tZAlVfkWWukzXC");
-      console.log('EmailJS initialized successfully');
-    } catch (err) {
-      console.error('Error initializing EmailJS:', err);
-    }
-  }, []);
+  // Use wouter for navigation
+  const [, setLocation] = useLocation();
 
   const onSubmit = async (data: ContactFormValues) => {
     try {
       setIsSubmitting(true);
       
-      console.log('Attempting to send email with data:', {
+      console.log('Processing contact form submission:', {
         name: data.name,
         email: data.email,
         messageLength: data.message.length
       });
       
-      // Create EmailJS template parameters
-      const templateParams = {
-        from_name: data.name,
-        from_email: data.email,
-        message: data.message,
-        to_name: 'Aliakbar',
-        reply_to: data.email
-      };
-      
-      // Send email directly with EmailJS
-      // Using updated credentials from previous attempts
-      const result = await emailjs.send(
-        "service_1plb0x9", 
-        "template_tl6wk0q", 
-        templateParams
-      );
-      
-      console.log('EmailJS Response:', result);
-      console.log('Email sent successfully using EmailJS');
-      
-      // Also send to the backend for storage
+      // Store message on the server
       try {
-        await fetch('/api/send-email', {
+        const response = await fetch('/api/send-email', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -81,28 +53,27 @@ const Contact = () => {
             message: data.message,
           }),
         });
-      } catch (backendError) {
-        // If backend storage fails, just log it - don't fail the whole operation
-        console.warn('Backend storage failed but email was sent:', backendError);
+        
+        if (!response.ok) {
+          throw new Error('Failed to submit form');
+        }
+        
+        // Reset the form
+        form.reset();
+        
+        // Redirect to success page
+        setLocation('/message-success');
+        
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        throw error;
       }
-      
-      // Show success toast
-      toast({
-        title: "Message sent successfully!",
-        description: "Thanks for reaching out. I'll get back to you soon.",
-        className: "bg-neon-blue text-dark border-none",
-      });
-      
-      // Reset the form after successful submission
-      form.reset();
     } catch (error) {
-      console.error('Error sending email:', error);
-      // Show detailed error toast with the actual error
+      console.error('Contact form error:', error);
+      // Show error toast
       toast({
         title: "Error sending message",
-        description: error instanceof Error 
-          ? `Error: ${error.message}. Please try again or contact directly via email.`
-          : "An unknown error occurred. Please try again or contact directly via email.",
+        description: "Please try again or contact directly via email.",
         variant: "destructive",
       });
     } finally {
