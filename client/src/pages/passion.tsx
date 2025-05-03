@@ -47,15 +47,23 @@ const PassionPage = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="w-full h-[60vh] mb-16 overflow-hidden rounded-xl"
+            className="w-full h-auto md:h-[60vh] mb-16 overflow-hidden rounded-xl flex items-center justify-center bg-dark-lighter"
           >
-            <img
-              src={`/photo3.jpg?v=${Date.now()}`}
-              alt="Aliakbar biking"
-              className="w-full h-full object-cover"
-              loading="lazy"
-              onError={(e) => (e.currentTarget.src = "/fallback.jpg")}
-            />
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <img
+                src={`/photo3.jpg?v=${Date.now()}`}
+                alt="Aliakbar biking"
+                className="max-w-full max-h-full object-contain rounded-lg shadow-lg"
+                loading="lazy"
+                onError={(e) => (e.currentTarget.src = "/fallback.jpg")}
+                style={{ 
+                  objectPosition: "center center",
+                  width: "auto",
+                  height: "auto",
+                  maxHeight: "calc(60vh - 2rem)"
+                }}
+              />
+            </div>
           </motion.div>
 
           {/* Content Section */}
