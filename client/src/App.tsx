@@ -10,8 +10,6 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import FloatingSidebar from "@/components/FloatingSidebar";
-import ThemeToggle from "@/components/ThemeToggle";
-import { ThemeProvider, useTheme } from "@/components/ThemeProvider";
 import { useSectionObserver } from "@/hooks/use-section-observer";
 import { useScroll } from "@/hooks/use-scroll";
 import { Toaster } from "@/components/ui/toaster";
@@ -40,7 +38,7 @@ const HomePage = () => {
   }, [isMobileMenuOpen]);
 
   return (
-    <div className="min-h-screen bg-light dark:bg-navy text-dark dark:text-light overflow-x-hidden transition-colors duration-300">
+    <div className="min-h-screen bg-gradient-to-br from-[#fffbea] via-[#fdf6b2] to-[#fffbe6] text-[#1a1a1a] overflow-x-hidden transition-all duration-300">
       <Navbar 
         activeSection={activeSection} 
         scrollY={scrollY} 
@@ -49,22 +47,22 @@ const HomePage = () => {
       />
       <FloatingSidebar activeSection={activeSection} />
       <main>
-        <section id="home" ref={el => sectionRefs.current.home = el} className="transition-colors duration-300">
+        <section id="home" ref={el => sectionRefs.current.home = el} className="transition-all duration-300">
           <Hero />
         </section>
-        <section id="about" ref={el => sectionRefs.current.about = el} className="transition-colors duration-300">
+        <section id="about" ref={el => sectionRefs.current.about = el} className="transition-all duration-300">
           <About />
         </section>
-        <section id="skills" ref={el => sectionRefs.current.skills = el} className="transition-colors duration-300">
+        <section id="skills" ref={el => sectionRefs.current.skills = el} className="transition-all duration-300">
           <Skills />
         </section>
-        <section id="projects" ref={el => sectionRefs.current.projects = el} className="transition-colors duration-300">
+        <section id="projects" ref={el => sectionRefs.current.projects = el} className="transition-all duration-300">
           <Projects />
         </section>
-        <section id="certifications" ref={el => sectionRefs.current.certifications = el} className="transition-colors duration-300">
+        <section id="certifications" ref={el => sectionRefs.current.certifications = el} className="transition-all duration-300">
           <Certifications />
         </section>
-        <section id="contact" ref={el => sectionRefs.current.contact = el} className="transition-colors duration-300">
+        <section id="contact" ref={el => sectionRefs.current.contact = el} className="transition-all duration-300">
           <Contact />
         </section>
       </main>
@@ -74,13 +72,10 @@ const HomePage = () => {
   );
 };
 
-// Layout component that includes ThemeToggle
+// Layout component 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  const { isDarkMode, toggleTheme } = useTheme();
-  
   return (
-    <div className="min-h-screen bg-light dark:bg-navy text-dark dark:text-light transition-colors duration-300">
-      <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+    <div className="min-h-screen bg-gradient-to-br from-[#fffbea] via-[#fdf6b2] to-[#fffbe6] text-[#1a1a1a] transition-all duration-300">
       {children}
       <Toaster />
     </div>
@@ -90,18 +85,16 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 // Main App component with routing
 function App() {
   return (
-    <ThemeProvider>
-      <Layout>
-        <Switch>
-          <Route path="/" component={HomePage} />
-          <Route path="/resume-view" component={ResumeView} />
-          <Route path="/passion" component={PassionPage} />
-          <Route path="/message-success" component={MessageSuccess} />
-          <Route path="/admin-messages" component={AdminMessages} />
-          <Route component={NotFound} />
-        </Switch>
-      </Layout>
-    </ThemeProvider>
+    <Layout>
+      <Switch>
+        <Route path="/" component={HomePage} />
+        <Route path="/resume-view" component={ResumeView} />
+        <Route path="/passion" component={PassionPage} />
+        <Route path="/message-success" component={MessageSuccess} />
+        <Route path="/admin-messages" component={AdminMessages} />
+        <Route component={NotFound} />
+      </Switch>
+    </Layout>
   );
 }
 

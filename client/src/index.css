@@ -74,20 +74,8 @@
   }
 
   body {
-    @apply font-inter antialiased;
-    transition: var(--theme-transition);
-  }
-  
-  body {
-    @apply bg-light text-dark;
-  }
-  
-  .dark body {
-    @apply bg-navy text-light;
-  }
-  
-  html.dark {
-    color-scheme: dark;
+    @apply font-inter antialiased bg-gradient-to-br from-[#fffbea] via-[#fdf6b2] to-[#fffbe6] text-[#1a1a1a];
+    transition: all 0.3s ease;
   }
   
   * {
