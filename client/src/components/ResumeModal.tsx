@@ -112,12 +112,22 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
             {/* PDF Content */}
             <div className="w-full h-full overflow-hidden bg-gray-100 dark:bg-dark">
               {!iframeError ? (
-                <iframe 
-                  src="/resume.pdf" 
-                  className="w-full h-full border-0"
-                  title="Aliakbar Calcuttawala Resume"
+                <object
+                  data="/resume.pdf" 
+                  type="application/pdf"
+                  className="w-full h-full"
+                  aria-label="Aliakbar Calcuttawala Resume"
+                  data-testid="modal-resume-object"
                   onError={handleIframeError}
-                />
+                >
+                  <iframe 
+                    src={`https://docs.google.com/viewer?url=${window.location.origin}/resume.pdf&embedded=true`}
+                    className="w-full h-full border-0"
+                    title="Aliakbar Calcuttawala Resume"
+                    onError={handleIframeError}
+                    data-testid="modal-resume-iframe-fallback"
+                  />
+                </object>
               ) : (
                 <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center">
                   <svg 

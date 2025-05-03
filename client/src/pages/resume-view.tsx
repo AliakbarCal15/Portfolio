@@ -82,12 +82,22 @@ const ResumeView = () => {
       >
         <div className="bg-white dark:bg-dark-lighter shadow-lg rounded-lg overflow-hidden h-[80vh]">
           {!iframeError ? (
-            <iframe 
-              src="/resume.pdf" 
-              className="w-full h-full border-0"
-              title="Aliakbar Calcuttawala Resume"
+            <object
+              data="/resume.pdf" 
+              type="application/pdf"
+              className="w-full h-full"
+              aria-label="Aliakbar Calcuttawala Resume"
+              data-testid="resume-object"
               onError={handleIframeError}
-            />
+            >
+              <iframe 
+                src={`https://docs.google.com/viewer?url=${window.location.origin}/resume.pdf&embedded=true`}
+                className="w-full h-full border-0"
+                title="Aliakbar Calcuttawala Resume"
+                onError={handleIframeError}
+                data-testid="resume-iframe-fallback"
+              />
+            </object>
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center">
               <svg 
