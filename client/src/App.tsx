@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Route, Switch } from "wouter";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -12,8 +13,12 @@ import FloatingSidebar from "@/components/FloatingSidebar";
 import { useSectionObserver } from "@/hooks/use-section-observer";
 import { useScroll } from "@/hooks/use-scroll";
 import { Toaster } from "@/components/ui/toaster";
+import NotFound from "@/pages/not-found";
+import ResumeView from "@/pages/resume-view";
+import { ThemeProvider } from "./components/ThemeProvider";
 
-function App() {
+// Main Portfolio Homepage Component
+const HomePage = () => {
   const { activeSection, sectionRefs } = useSectionObserver();
   const { scrollY } = useScroll();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -31,7 +36,7 @@ function App() {
   }, [isMobileMenuOpen]);
 
   return (
-    <div className="bg-navy min-h-screen text-light overflow-x-hidden">
+    <div className="bg-navy dark:bg-dark min-h-screen text-light overflow-x-hidden">
       <Navbar 
         activeSection={activeSection} 
         scrollY={scrollY} 
@@ -61,8 +66,23 @@ function App() {
       </main>
       <Footer />
       <BackToTop visible={scrollY > 300} />
-      <Toaster />
     </div>
+  );
+};
+
+// Main App component with routing
+function App() {
+  return (
+    <ThemeProvider defaultTheme="dark">
+      <div className="min-h-screen bg-light dark:bg-navy text-dark dark:text-light">
+        <Switch>
+          <Route path="/" component={HomePage} />
+          <Route path="/resume-view" component={ResumeView} />
+          <Route component={NotFound} />
+        </Switch>
+        <Toaster />
+      </div>
+    </ThemeProvider>
   );
 }
 
