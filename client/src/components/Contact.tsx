@@ -1,10 +1,10 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
-import { useLocation } from 'wouter';
+import emailjs from '@emailjs/browser';
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -29,47 +29,55 @@ const Contact = () => {
     },
   });
 
-  // Use wouter for navigation
-  const [, setLocation] = useLocation();
+  // Initialize EmailJS
+  useEffect(() => {
+    // This is emailjs PUBLIC key which is meant to be exposed on client-side
+    emailjs.init("lwF9BxKMxnEFnbEPL");
+  }, []);
 
   const onSubmit = async (data: ContactFormValues) => {
     try {
       setIsSubmitting(true);
       
-      console.log('Processing contact form submission:', {
-        name: data.name,
-        email: data.email,
-        messageLength: data.message.length
+      const formElement = document.createElement('form');
+      
+      // Create hidden input elements for each form field
+      const nameInput = document.createElement('input');
+      nameInput.name = 'from_name';
+      nameInput.value = data.name;
+      formElement.appendChild(nameInput);
+      
+      const emailInput = document.createElement('input');
+      emailInput.name = 'reply_to';
+      emailInput.value = data.email;
+      formElement.appendChild(emailInput);
+      
+      const messageInput = document.createElement('textarea');
+      messageInput.name = 'message';
+      messageInput.value = data.message;
+      formElement.appendChild(messageInput);
+      
+      // Send email using EmailJS directly without server
+      await emailjs.sendForm(
+        'service_7kh6xvk', // EmailJS Service ID
+        'template_91ytazk', // EmailJS Template ID
+        formElement
+      );
+      
+      console.log('Email sent successfully with EmailJS!');
+      
+      // Reset the form
+      form.reset();
+      
+      // Show success toast
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+        className: "bg-neon-blue text-dark border-none",
       });
       
-      // Store message on the server
-      try {
-        const response = await fetch('/api/send-email', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: data.name,
-            email: data.email,
-            message: data.message,
-          }),
-        });
-        
-        if (!response.ok) {
-          throw new Error('Failed to submit form');
-        }
-        
-        // Reset the form
-        form.reset();
-        
-        // Redirect to success page
-        setLocation('/message-success');
-        
-      } catch (error) {
-        console.error('Error submitting form:', error);
-        throw error;
-      }
     } catch (error) {
-      console.error('Contact form error:', error);
+      console.error('Error sending email:', error);
       // Show error toast
       toast({
         title: "Error sending message",
