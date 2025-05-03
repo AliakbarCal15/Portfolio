@@ -50,9 +50,11 @@ const PassionPage = () => {
             className="w-full h-[60vh] mb-16 overflow-hidden rounded-xl"
           >
             <img
-              src="/photo3.jpg"
+              src={`/photo3.jpg?v=${Date.now()}`}
               alt="Aliakbar biking"
               className="w-full h-full object-cover"
+              loading="lazy"
+              onError={(e) => (e.currentTarget.src = "/fallback.jpg")}
             />
           </motion.div>
 
