@@ -53,9 +53,9 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ isDarkMode, toggleTheme }) =>
       
       .theme-toggle-button {
         position: fixed;
-        top: 20px;
+        top: 85px;
         right: 20px;
-        z-index: 50;
+        z-index: 1000;
         width: 48px;
         height: 48px;
         border-radius: 9999px;
@@ -67,6 +67,13 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ isDarkMode, toggleTheme }) =>
         cursor: pointer;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         transition: all 0.3s ease;
+      }
+      
+      @media (min-width: 768px) {
+        .theme-toggle-button {
+          top: 20px;
+          right: 20px;
+        }
       }
       
       .theme-toggle-button:hover {
