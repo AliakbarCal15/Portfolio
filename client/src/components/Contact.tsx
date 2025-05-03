@@ -22,9 +22,17 @@ const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  // Initialize EmailJS
+  // Initialize EmailJS with debugging enabled
   useEffect(() => {
-    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '');
+    // Log environment variables (sanitized) for debugging
+    console.log('EmailJS Config:', {
+      serviceIDAvailable: !!import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      templateIDAvailable: !!import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      publicKeyAvailable: !!import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    });
+    
+    // Enable debug mode for EmailJS
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '', { debug: true });
   }, []);
   
   const form = useForm<ContactFormValues>({
@@ -68,10 +76,10 @@ const Contact = () => {
       form.reset();
     } catch (error) {
       console.error('Error sending email:', error);
-      // Show error toast
+      // Show detailed error toast with the actual error
       toast({
         title: "Error sending message",
-        description: "Something went wrong. Please try again or contact directly via email.",
+        description: `Error: ${error instanceof Error ? error.message : 'Unknown error'}. Please try again or contact directly via email.`,
         variant: "destructive",
       });
     } finally {
