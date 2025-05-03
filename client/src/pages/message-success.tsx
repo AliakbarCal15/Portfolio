@@ -30,9 +30,9 @@ export default function MessageSuccess() {
         
         <div className="space-y-3">
           <Link href="/">
-            <a className="block w-full bg-neon-blue text-dark py-3 rounded-md font-medium transition-all duration-300 hover:bg-opacity-90">
+            <button className="block w-full bg-neon-blue text-dark py-3 rounded-md font-medium transition-all duration-300 hover:bg-opacity-90">
               Back to Homepage
-            </a>
+            </button>
           </Link>
           <p className="text-sm text-light-darker mt-6">
             If you need immediate assistance, please contact me directly at{' '}

@@ -18,6 +18,7 @@ import NotFound from "@/pages/not-found";
 import ResumeView from "@/pages/resume-view";
 import PassionPage from "@/pages/passion";
 import MessageSuccess from "@/pages/message-success";
+import AdminMessages from "@/pages/admin-messages";
 
 // Main Portfolio Homepage Component
 const HomePage = () => {
@@ -106,6 +107,7 @@ function App() {
         <Route path="/resume-view" component={ResumeView} />
         <Route path="/passion" component={PassionPage} />
         <Route path="/message-success" component={MessageSuccess} />
+        <Route path="/admin-messages" component={AdminMessages} />
         <Route component={NotFound} />
       </Switch>
       <Toaster />
