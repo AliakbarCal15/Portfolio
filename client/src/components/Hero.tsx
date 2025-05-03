@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Typewriter } from "react-simple-typewriter";
+import WelcomeMessage from "./WelcomeMessage";
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -69,6 +70,9 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
+        {/* Welcome Message - time-based greeting */}
+        <WelcomeMessage className="mb-8 md:mb-10 max-w-lg mx-auto md:mx-0" />
+        
         <div className="flex flex-col md:flex-row items-center md:justify-between">
           <div className="md:w-7/12 mb-10 md:mb-0">
             <motion.p

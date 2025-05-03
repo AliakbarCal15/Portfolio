@@ -47,9 +47,23 @@ const PassionPage = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="w-full h-auto md:h-[60vh] mb-16 overflow-hidden rounded-xl flex items-center justify-center bg-dark-lighter"
+            className="w-full h-auto md:h-[60vh] mb-16 overflow-hidden rounded-xl flex items-center justify-center relative"
+            style={{ 
+              background: "linear-gradient(rgba(20, 20, 30, 0.7), rgba(10, 10, 18, 0.8))"
+            }}
           >
-            <div className="w-full h-full flex items-center justify-center p-4">
+            {/* Blurred Background Image */}
+            <div className="absolute inset-0 z-0 overflow-hidden"
+              style={{
+                backgroundImage: `url(/photo3.jpg?v=${Date.now()})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                filter: "blur(15px) brightness(0.4)",
+                opacity: 0.6
+              }}
+            ></div>
+            
+            <div className="w-full h-full flex items-center justify-center p-4 z-10 relative">
               <img
                 src={`/photo3.jpg?v=${Date.now()}`}
                 alt="Aliakbar biking"
