@@ -10,12 +10,12 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import FloatingSidebar from "@/components/FloatingSidebar";
+import ThemeToggle from "@/components/ThemeToggle";
 import { useSectionObserver } from "@/hooks/use-section-observer";
 import { useScroll } from "@/hooks/use-scroll";
 import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import ResumeView from "@/pages/resume-view";
-import { ThemeProvider } from "./components/ThemeProvider";
 
 // Main Portfolio Homepage Component
 const HomePage = () => {
@@ -72,17 +72,33 @@ const HomePage = () => {
 
 // Main App component with routing
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(true);
+  
+  useEffect(() => {
+    // Apply dark mode class to document
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+  
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    // Save preference to localStorage
+    localStorage.setItem('theme', !isDarkMode ? 'dark' : 'light');
+  };
+
   return (
-    <ThemeProvider defaultTheme="dark">
-      <div className="min-h-screen bg-light dark:bg-navy text-dark dark:text-light">
-        <Switch>
-          <Route path="/" component={HomePage} />
-          <Route path="/resume-view" component={ResumeView} />
-          <Route component={NotFound} />
-        </Switch>
-        <Toaster />
-      </div>
-    </ThemeProvider>
+    <div className="min-h-screen bg-light dark:bg-navy text-dark dark:text-light">
+      <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+      <Switch>
+        <Route path="/" component={HomePage} />
+        <Route path="/resume-view" component={ResumeView} />
+        <Route component={NotFound} />
+      </Switch>
+      <Toaster />
+    </div>
   );
 }
 
