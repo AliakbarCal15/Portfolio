@@ -40,7 +40,7 @@ const HomePage = () => {
   }, [isMobileMenuOpen]);
 
   return (
-    <div className="bg-light dark:bg-navy min-h-screen text-dark dark:text-light overflow-x-hidden transition-colors duration-300">
+    <div className="min-h-screen bg-light dark:bg-navy text-dark dark:text-light overflow-x-hidden transition-colors duration-300">
       <Navbar 
         activeSection={activeSection} 
         scrollY={scrollY} 
@@ -49,22 +49,22 @@ const HomePage = () => {
       />
       <FloatingSidebar activeSection={activeSection} />
       <main>
-        <section id="home" ref={el => sectionRefs.current.home = el}>
+        <section id="home" ref={el => sectionRefs.current.home = el} className="transition-colors duration-300">
           <Hero />
         </section>
-        <section id="about" ref={el => sectionRefs.current.about = el}>
+        <section id="about" ref={el => sectionRefs.current.about = el} className="transition-colors duration-300">
           <About />
         </section>
-        <section id="skills" ref={el => sectionRefs.current.skills = el}>
+        <section id="skills" ref={el => sectionRefs.current.skills = el} className="transition-colors duration-300">
           <Skills />
         </section>
-        <section id="projects" ref={el => sectionRefs.current.projects = el}>
+        <section id="projects" ref={el => sectionRefs.current.projects = el} className="transition-colors duration-300">
           <Projects />
         </section>
-        <section id="certifications" ref={el => sectionRefs.current.certifications = el}>
+        <section id="certifications" ref={el => sectionRefs.current.certifications = el} className="transition-colors duration-300">
           <Certifications />
         </section>
-        <section id="contact" ref={el => sectionRefs.current.contact = el}>
+        <section id="contact" ref={el => sectionRefs.current.contact = el} className="transition-colors duration-300">
           <Contact />
         </section>
       </main>

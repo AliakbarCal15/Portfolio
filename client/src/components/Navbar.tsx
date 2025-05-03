@@ -64,7 +64,7 @@ const Navbar = ({
               {label}
             </a>
           ))}
-          <Link href="/passion" className="text-light hover:text-neon-blue transition-colors flex items-center gap-1">
+          <Link href="/passion" className="text-dark dark:text-light hover:text-neon-blue transition-colors flex items-center gap-1">
             <span>Passion</span>
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
@@ -86,7 +86,7 @@ const Navbar = ({
         {/* Mobile Menu Button */}
         <button 
           onClick={toggleMobileMenu} 
-          className="md:hidden text-light focus:outline-none"
+          className="md:hidden text-dark dark:text-light focus:outline-none"
           aria-label="Toggle mobile menu"
         >
           <svg 
@@ -123,7 +123,7 @@ const Navbar = ({
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-dark bg-opacity-95 backdrop-blur-md"
+            className="md:hidden bg-light dark:bg-dark bg-opacity-95 backdrop-blur-md"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex flex-col space-y-4 px-4 py-6">
@@ -134,7 +134,7 @@ const Navbar = ({
                   className={`py-2 transition-colors ${
                     activeSection === href.substring(1) 
                       ? 'text-neon-blue' 
-                      : 'text-light hover:text-neon-blue'
+                      : 'text-dark dark:text-light hover:text-neon-blue'
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -143,7 +143,7 @@ const Navbar = ({
               ))}
               <Link 
                 href="/passion" 
-                className="py-2 text-light hover:text-neon-blue transition-colors flex items-center gap-1"
+                className="py-2 text-dark dark:text-light hover:text-neon-blue transition-colors flex items-center gap-1"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <span>Passion</span>

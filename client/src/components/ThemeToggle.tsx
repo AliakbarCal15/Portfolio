@@ -53,9 +53,9 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ isDarkMode, toggleTheme }) =>
       
       .theme-toggle-button {
         position: fixed;
-        top: 85px;
+        top: 20px;
         right: 20px;
-        z-index: 1000;
+        z-index: 9999;
         width: 48px;
         height: 48px;
         border-radius: 9999px;
@@ -65,14 +65,14 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ isDarkMode, toggleTheme }) =>
         justify-content: center;
         overflow: hidden;
         cursor: pointer;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         transition: all 0.3s ease;
       }
       
-      @media (min-width: 768px) {
+      @media (max-width: 767px) {
         .theme-toggle-button {
           top: 20px;
-          right: 20px;
+          right: 80px;
         }
       }
       
@@ -107,7 +107,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ isDarkMode, toggleTheme }) =>
   
   return (
     <button
-      className={`theme-toggle-button ${isDarkMode ? 'bg-dark-lighter' : 'bg-white'}`}
+      className={`theme-toggle-button ${isDarkMode ? 'bg-dark-lighter dark:bg-navy text-white' : 'bg-white dark:bg-dark-lighter text-dark'}`}
       onClick={handleClick}
       aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
     >

@@ -74,10 +74,16 @@
   }
 
   body {
-    @apply font-inter antialiased bg-background text-foreground;
-    background: linear-gradient(to bottom, #0A192F, #121212);
-    background-attachment: fixed;
+    @apply font-inter antialiased;
     transition: var(--theme-transition);
+  }
+  
+  body {
+    @apply bg-light text-dark;
+  }
+  
+  .dark body {
+    @apply bg-navy text-light;
   }
   
   html.dark {
