@@ -1,9 +1,10 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from '@emailjs/browser';
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -28,34 +29,61 @@ const Contact = () => {
     },
   });
 
+  // Initialize EmailJS with hardcoded PUBLIC_KEY
+  useEffect(() => {
+    // Using the PUBLIC_KEY directly since it's meant to be exposed on the client-side
+    const PUBLIC_KEY = "wKAnlxsUGEWW_e_dM";
+    
+    try {
+      // Initialize EmailJS
+      emailjs.init(PUBLIC_KEY);
+      console.log('EmailJS initialized successfully');
+    } catch (err) {
+      console.error('Error initializing EmailJS:', err);
+    }
+  }, []);
+
   const onSubmit = async (data: ContactFormValues) => {
     try {
       setIsSubmitting(true);
       
-      // Send email through our backend API
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          message: data.message,
-        }),
-      });
+      // Create EmailJS template parameters
+      const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        message: data.message,
+        to_name: 'Aliakbar',
+        reply_to: data.email
+      };
       
-      // Parse the JSON response
-      const result = await response.json();
+      // Direct EmailJS configuration with hardcoded values
+      const SERVICE_ID = "service_jk7r9fj";  // Your actual service ID
+      const TEMPLATE_ID = "template_u0sjgbf";  // Your actual template ID
       
-      if (!response.ok) {
-        throw new Error(result.error || 'Failed to send message');
+      // Send the email using EmailJS directly
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams);
+      console.log('Email sent successfully using EmailJS');
+      
+      // Also send to the backend for storage
+      try {
+        await fetch('/api/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            message: data.message,
+          }),
+        });
+      } catch (backendError) {
+        // If backend storage fails, just log it - don't fail the whole operation
+        console.warn('Backend storage failed but email was sent:', backendError);
       }
       
-      // Show success toast with the message from the server
+      // Show success toast
       toast({
         title: "Message sent successfully!",
-        description: result.message || "Thanks for reaching out. I'll get back to you soon.",
+        description: "Thanks for reaching out. I'll get back to you soon.",
         className: "bg-neon-blue text-dark border-none",
       });
       
