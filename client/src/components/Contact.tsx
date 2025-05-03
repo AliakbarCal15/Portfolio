@@ -29,14 +29,11 @@ const Contact = () => {
     },
   });
 
-  // Initialize EmailJS with hardcoded PUBLIC_KEY
+  // Initialize EmailJS with the most recent PUBLIC_KEY
   useEffect(() => {
-    // Using the PUBLIC_KEY directly since it's meant to be exposed on the client-side
-    const PUBLIC_KEY = "wKAnlxsUGEWW_e_dM";
-    
     try {
-      // Initialize EmailJS
-      emailjs.init(PUBLIC_KEY);
+      // Directly initialize EmailJS
+      emailjs.init("5I5tZAlVfkWWukzXC");
       console.log('EmailJS initialized successfully');
     } catch (err) {
       console.error('Error initializing EmailJS:', err);
@@ -47,6 +44,12 @@ const Contact = () => {
     try {
       setIsSubmitting(true);
       
+      console.log('Attempting to send email with data:', {
+        name: data.name,
+        email: data.email,
+        messageLength: data.message.length
+      });
+      
       // Create EmailJS template parameters
       const templateParams = {
         from_name: data.name,
@@ -56,12 +59,15 @@ const Contact = () => {
         reply_to: data.email
       };
       
-      // Direct EmailJS configuration with hardcoded values
-      const SERVICE_ID = "service_jk7r9fj";  // Your actual service ID
-      const TEMPLATE_ID = "template_u0sjgbf";  // Your actual template ID
+      // Send email directly with EmailJS
+      // Using updated credentials from previous attempts
+      const result = await emailjs.send(
+        "service_1plb0x9", 
+        "template_tl6wk0q", 
+        templateParams
+      );
       
-      // Send the email using EmailJS directly
-      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams);
+      console.log('EmailJS Response:', result);
       console.log('Email sent successfully using EmailJS');
       
       // Also send to the backend for storage
