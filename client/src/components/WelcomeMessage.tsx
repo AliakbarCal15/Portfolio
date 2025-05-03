@@ -110,7 +110,7 @@ const WelcomeMessage = ({ visitorName: initialName = 'Guest', className = '' }: 
             />
             <button 
               onClick={saveName} 
-              className="ml-1 text-neon-blue hover:text-light transition-colors text-sm"
+              className="ml-1 text-yellow-600 hover:text-yellow-700 transition-colors text-sm"
               aria-label="Save name"
             >
               <span className="text-lg">✓</span>
@@ -119,7 +119,7 @@ const WelcomeMessage = ({ visitorName: initialName = 'Guest', className = '' }: 
         ) : (
           <button
             onClick={startEditing}
-            className="ml-2 text-xs text-light-darker hover:text-neon-blue transition-colors flex items-center"
+            className="ml-2 text-xs text-[#666666] hover:text-yellow-600 transition-colors flex items-center"
             aria-label="Change name"
           >
             <span className="mr-1 text-xs">✏️</span>
