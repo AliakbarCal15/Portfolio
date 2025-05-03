@@ -1,6 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import sgMail from '@sendgrid/mail';
+import nodemailer from 'nodemailer';
 
 export async function registerRoutes(app: Express): Promise<Server> {
   
@@ -17,8 +17,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Store contact messages in memory (in a real app, these would be in a database)
   const contactMessages: ContactMessage[] = [];
   
-  // Initialize SendGrid with API key
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
+  // Create a reusable nodemailer transporter using Gmail SMTP
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: 'aliakbarcal15@gmail.com', // Your Gmail address
+      pass: process.env.GMAIL_APP_PASSWORD // App password from environment variables
+    }
+  });
   
   app.post('/api/send-email', async (req, res) => {
     try {
@@ -44,11 +52,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       console.log('New contact form submission:', contactMessage);
       
-      // Prepare email using SendGrid
-      const msg = {
-        to: 'aliakbarcal15@gmail.com', // Your email
-        from: 'aliakbarcal15@gmail.com', // This must be your verified email in SendGrid
-        subject: `Contact Form Submission from ${name}`,
+      // Prepare email using Nodemailer
+      const mailOptions = {
+        from: '"Portfolio Contact Form" <aliakbarcal15@gmail.com>',
+        to: 'aliakbarcal15@gmail.com',
+        subject: `Portfolio Contact: ${name}`,
+        replyTo: email,
         text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eaeaea; border-radius: 5px;">
@@ -64,13 +73,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
             </div>
             <p style="margin-top: 20px; font-size: 12px; color: #6b7280;">This email was sent from your portfolio website contact form.</p>
           </div>
-        `,
-        replyTo: email
+        `
       };
       
-      // Send email
-      await sgMail.send(msg);
-      console.log('Email sent successfully with SendGrid');
+      // Send email using nodemailer
+      const info = await transporter.sendMail(mailOptions);
+      console.log('Email sent successfully with Nodemailer. Message ID:', info.messageId);
       
       return res.status(200).json({ 
         success: true, 
@@ -78,12 +86,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
         contactId: contactMessage.id
       });
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('Error sending email with Nodemailer:', error);
       
       // Even if the email fails, we still have the message in our in-memory storage
-      return res.status(200).json({ 
-        success: true,
-        message: 'Your message has been received! Thank you for reaching out.',
+      return res.status(500).json({ 
+        success: false, 
+        error: 'Failed to send email. Please try again later.',
         contactId: Date.now().toString()
       });
     }
