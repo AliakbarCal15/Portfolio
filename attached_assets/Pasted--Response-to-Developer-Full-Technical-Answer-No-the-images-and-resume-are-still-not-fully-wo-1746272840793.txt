@@ -1,0 +1,76 @@
+🧾 ✅ Response to Developer (Full Technical Answer):
+No, the images and resume are still not fully working as expected. Please make the following adjustments:
+
+🖼️ 1. Image Mapping Not Correct
+All three images (photo1.jpg, photo2.jpg, photo3.jpg) are in the public/ folder, but their usage in components is incorrect or mismatched.
+
+✅ Correct usage must be:
+
+Hero Section → <img src="/photo1.jpg" alt="Aliakbar Formal" />
+
+About Section → <img src="/photo2.jpg" alt="Aliakbar Casual" />
+
+Passion Page → <img src="/photo3.jpg" alt="Aliakbar with Bike" />
+
+🛠️ Ensure these are mapped exactly as named. Do not import images from public. Use direct root path:
+/photo1.jpg, /photo2.jpg, /photo3.jpg
+
+📄 2. Resume View Still Not Working
+The "View Resume" button opens a blank white iframe.
+
+This usually means the file is either:
+
+Not served as a proper PDF MIME type
+
+Not placed correctly in the /public folder
+
+Or, the iframe’s path is wrong
+
+✅ Fix it by ensuring:
+
+jsx
+Copy
+Edit
+<iframe
+  src="/resume.pdf"
+  className="w-full h-[500px]"
+  title="Aliakbar Resume"
+/>
+🛠️ If this still doesn’t work, fallback option:
+
+Create a dedicated route/page /resume-view
+
+Inside that page, embed the iframe and a download button
+
+🌗 3. Light and Dark Mode Issue
+Light/Dark mode is currently only working on the Passion page or not functional globally.
+
+✅ I want:
+
+Global light/dark mode toggle
+
+Theme switch should persist across all pages
+
+It should change background, text, button, and accent colors smoothly
+
+Use Tailwind CSS’s dark mode setup:
+
+darkMode: 'class' in tailwind.config.js
+
+Use className={dark ? 'dark' : ''} wrapping <body> or <div id="root">
+
+Toggle should use a button with sun/moon icon and toggle the class
+
+🎨 Choose a professional, soothing theme:
+
+Light: #f6f6f6 bg, #1a1a1a text
+
+Dark: #121212 bg, #e2e2e2 text
+
+Add subtle corner spreading glow effect on toggle if possible
+
+✅ Final Answer to:
+Are all the images and resume loading correctly now? What else would you like me to adjust?
+
+No, not yet. The images are not mapped correctly (photo1, photo2, photo3 are mismatched or not rendering properly), and the resume iframe still shows a blank page. Please ensure correct public path usage. Also, implement a full-site functional light/dark theme toggle with smooth transitions and a clean color palette.
+
