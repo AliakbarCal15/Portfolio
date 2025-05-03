@@ -112,13 +112,14 @@ const About = () => {
               {/* Developer Image */}
               <div className="w-full h-80 sm:h-96 rounded-lg overflow-hidden shadow-xl relative">
                 <img
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                  alt="Software Developer"
+                  src="/photo2.jpg"
+                  alt="Aliakbar Calcuttawala"
                   loading="lazy"
                   onError={(e) => (e.currentTarget.src = "/fallback.jpg")}
                   className="w-full h-full object-cover rounded-lg"
                   style={{
-                    filter: "grayscale(30%) contrast(110%) brightness(70%)",
+                    filter: "grayscale(20%) contrast(110%) brightness(80%)",
+                    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-80"></div>

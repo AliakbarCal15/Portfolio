@@ -196,7 +196,7 @@ const Hero = () => {
                 }}
               >
                 <img
-                  src="/profile.jpg"
+                  src="/photo1.jpg"
                   alt="Aliakbar Calcuttawala"
                   className="w-full h-full object-cover"
                   loading="lazy"
