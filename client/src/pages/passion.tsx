@@ -6,23 +6,21 @@ const PassionPage = () => {
     <div className="min-h-screen bg-dark dark:bg-dark text-light">
       {/* Header with Navigation */}
       <header className="py-6 px-6 md:px-12 flex justify-between items-center">
-        <Link href="/">
-          <a className="flex items-center gap-2 text-neon-blue font-bold text-xl transition-colors hover:text-light">
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="24" 
-              height="24" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            >
-              <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-            <span>Back to Portfolio</span>
-          </a>
+        <Link href="/" className="flex items-center gap-2 text-neon-blue font-bold text-xl transition-colors hover:text-light">
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="24" 
+            height="24" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          >
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          <span>Back to Portfolio</span>
         </Link>
       </header>
 
