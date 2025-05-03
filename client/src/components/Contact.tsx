@@ -52,10 +52,10 @@ const Contact = () => {
         throw new Error(result.error || 'Failed to send message');
       }
       
-      // Show success toast
+      // Show success toast with the message from the server
       toast({
         title: "Message sent successfully!",
-        description: "Thanks for reaching out. I'll get back to you soon.",
+        description: result.message || "Thanks for reaching out. I'll get back to you soon.",
         className: "bg-neon-blue text-dark border-none",
       });
       
@@ -66,7 +66,9 @@ const Contact = () => {
       // Show detailed error toast with the actual error
       toast({
         title: "Error sending message",
-        description: `Error: ${error instanceof Error ? error.message : 'Unknown error'}. Please try again or contact directly via email.`,
+        description: error instanceof Error 
+          ? `Error: ${error.message}. Please try again or contact directly via email.`
+          : "An unknown error occurred. Please try again or contact directly via email.",
         variant: "destructive",
       });
     } finally {
