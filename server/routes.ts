@@ -1,6 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import nodemailer from 'nodemailer';
+import sgMail from '@sendgrid/mail';
 
 export async function registerRoutes(app: Express): Promise<Server> {
   
@@ -16,6 +16,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   // Store contact messages in memory (in a real app, these would be in a database)
   const contactMessages: ContactMessage[] = [];
+  
+  // Initialize SendGrid with API key
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
   
   app.post('/api/send-email', async (req, res) => {
     try {
@@ -41,14 +44,33 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       console.log('New contact form submission:', contactMessage);
       
-      // Just log the message for now - email functionality can be added later
-      // when the Gmail authentication issues are resolved
-      console.log('New contact message:', {
-        name,
-        email,
-        message,
-        time: new Date().toLocaleString()
-      });
+      // Prepare email using SendGrid
+      const msg = {
+        to: 'aliakbarcal15@gmail.com', // Your email
+        from: 'aliakbarcal15@gmail.com', // This must be your verified email in SendGrid
+        subject: `Contact Form Submission from ${name}`,
+        text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eaeaea; border-radius: 5px;">
+            <h2 style="color: #3b82f6; margin-top: 0;">New Contact Form Submission</h2>
+            <p><strong>From:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Time:</strong> ${new Date().toLocaleString()}</p>
+            <div style="margin-top: 20px;">
+              <strong>Message:</strong>
+              <div style="background-color: #f9fafb; padding: 15px; border-radius: 5px; margin-top: 5px;">
+                ${message.replace(/\n/g, '<br />')}
+              </div>
+            </div>
+            <p style="margin-top: 20px; font-size: 12px; color: #6b7280;">This email was sent from your portfolio website contact form.</p>
+          </div>
+        `,
+        replyTo: email
+      };
+      
+      // Send email
+      await sgMail.send(msg);
+      console.log('Email sent successfully with SendGrid');
       
       return res.status(200).json({ 
         success: true, 
@@ -56,9 +78,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
         contactId: contactMessage.id
       });
     } catch (error) {
-      console.error('Error processing contact form:', error);
+      console.error('Error sending email:', error);
+      
+      // Even if the email fails, we still have the message in our in-memory storage
       return res.status(200).json({ 
-        success: true,  // Return success even if there's an error to provide better UX
+        success: true,
         message: 'Your message has been received! Thank you for reaching out.',
         contactId: Date.now().toString()
       });
