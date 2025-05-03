@@ -37,14 +37,14 @@ const Navbar = ({
 
   return (
     <nav 
-      className={`fixed top-0 left-0 w-full bg-dark bg-opacity-90 backdrop-blur-sm z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full bg-light dark:bg-dark bg-opacity-90 backdrop-blur-sm z-50 transition-all duration-300 ${
         scrolled ? 'py-2 shadow-md' : 'py-4'
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <a href="#home" className="text-neon-blue font-montserrat text-xl sm:text-2xl font-bold">
           <span className="relative">
-            Aliakbar <span className="text-light">Calcuttawala</span>
+            Aliakbar <span className="text-dark dark:text-light">Calcuttawala</span>
             <span className="absolute -bottom-1 left-0 bg-neon-blue h-0.5 w-full opacity-70"></span>
           </span>
         </a>
@@ -58,7 +58,7 @@ const Navbar = ({
               className={`transition-colors ${
                 activeSection === href.substring(1) 
                   ? 'text-neon-blue' 
-                  : 'text-light hover:text-neon-blue'
+                  : 'text-dark dark:text-light hover:text-neon-blue'
               }`}
             >
               {label}

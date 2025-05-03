@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import FloatingSidebar from "@/components/FloatingSidebar";
 import ThemeToggle from "@/components/ThemeToggle";
+import { ThemeProvider, useTheme } from "@/components/ThemeProvider";
 import { useSectionObserver } from "@/hooks/use-section-observer";
 import { useScroll } from "@/hooks/use-scroll";
 import { Toaster } from "@/components/ui/toaster";
@@ -39,7 +40,7 @@ const HomePage = () => {
   }, [isMobileMenuOpen]);
 
   return (
-    <div className="bg-navy dark:bg-dark min-h-screen text-light overflow-x-hidden">
+    <div className="bg-light dark:bg-navy min-h-screen text-dark dark:text-light overflow-x-hidden transition-colors duration-300">
       <Navbar 
         activeSection={activeSection} 
         scrollY={scrollY} 
@@ -73,45 +74,34 @@ const HomePage = () => {
   );
 };
 
-// Main App component with routing
-function App() {
-  // Store theme preference in local storage
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Check if there's a theme preference in localStorage
-    const savedTheme = localStorage.getItem('theme');
-    // If theme preference exists, use it; otherwise default to dark
-    return savedTheme ? savedTheme === 'dark' : true;
-  });
+// Layout component that includes ThemeToggle
+const Layout = ({ children }: { children: React.ReactNode }) => {
+  const { isDarkMode, toggleTheme } = useTheme();
   
-  useEffect(() => {
-    // Apply dark mode class to document root element
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    
-    // Save theme preference to localStorage
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-  }, [isDarkMode]);
-  
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
   return (
     <div className="min-h-screen bg-light dark:bg-navy text-dark dark:text-light transition-colors duration-300">
       <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-      <Switch>
-        <Route path="/" component={HomePage} />
-        <Route path="/resume-view" component={ResumeView} />
-        <Route path="/passion" component={PassionPage} />
-        <Route path="/message-success" component={MessageSuccess} />
-        <Route path="/admin-messages" component={AdminMessages} />
-        <Route component={NotFound} />
-      </Switch>
+      {children}
       <Toaster />
     </div>
+  );
+};
+
+// Main App component with routing
+function App() {
+  return (
+    <ThemeProvider>
+      <Layout>
+        <Switch>
+          <Route path="/" component={HomePage} />
+          <Route path="/resume-view" component={ResumeView} />
+          <Route path="/passion" component={PassionPage} />
+          <Route path="/message-success" component={MessageSuccess} />
+          <Route path="/admin-messages" component={AdminMessages} />
+          <Route component={NotFound} />
+        </Switch>
+      </Layout>
+    </ThemeProvider>
   );
 }
 
