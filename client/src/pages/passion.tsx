@@ -35,7 +35,7 @@ const PassionPage = () => {
             className="text-center mb-16"
           >
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              My <span className="text-neon-blue">Passion</span>
+              My <span className="text-neon-blue">Fuel🏍️</span>
             </h1>
             <p className="text-xl text-light-darker max-w-2xl mx-auto">
               Beyond code, I find balance on two wheels

@@ -1,53 +1,60 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
-type Theme = "dark" | "light";
+type Theme = "dark" | "light" | "system";
 
 type ThemeProviderProps = {
   children: React.ReactNode;
+  defaultTheme?: Theme;
+  storageKey?: string;
 };
 
 type ThemeProviderState = {
-  isDarkMode: boolean;
-  toggleTheme: () => void;
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
 };
 
 const initialState: ThemeProviderState = {
-  isDarkMode: true,
-  toggleTheme: () => null,
+  theme: "system",
+  setTheme: () => null,
 };
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({
   children,
+  defaultTheme = "system",
+  storageKey = "ui-theme",
   ...props
 }: ThemeProviderProps) {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(
-    () => {
-      const savedTheme = localStorage.getItem('theme');
-      return savedTheme ? savedTheme === 'dark' : true;
-    }
+  const [theme, setTheme] = useState<Theme>(
+    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
   );
 
   useEffect(() => {
     const root = window.document.documentElement;
     
-    if (isDarkMode) {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
-    
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-  }, [isDarkMode]);
+    // Remove the previous theme class
+    root.classList.remove("light", "dark");
 
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+    if (theme === "system") {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
+      
+      root.classList.add(systemTheme);
+      return;
+    }
+
+    root.classList.add(theme);
+  }, [theme]);
 
   const value = {
-    isDarkMode,
-    toggleTheme,
+    theme,
+    setTheme: (theme: Theme) => {
+      localStorage.setItem(storageKey, theme);
+      setTheme(theme);
+    },
   };
 
   return (

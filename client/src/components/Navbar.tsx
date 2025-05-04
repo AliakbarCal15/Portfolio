@@ -37,15 +37,15 @@ const Navbar = ({
 
   return (
     <nav 
-      className={`fixed top-0 left-0 w-full bg-white bg-opacity-90 backdrop-blur-sm z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full bg-dark bg-opacity-90 backdrop-blur-sm z-50 transition-all duration-300 ${
         scrolled ? 'py-2 shadow-md' : 'py-4'
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="#home" className="text-yellow-600 font-montserrat text-xl sm:text-2xl font-bold">
+        <a href="#home" className="text-neon-blue font-montserrat text-xl sm:text-2xl font-bold">
           <span className="relative">
-            Aliakbar <span className="text-[#333333]">Calcuttawala</span>
-            <span className="absolute -bottom-1 left-0 bg-yellow-400 h-0.5 w-full opacity-70"></span>
+            Wel<span className="text-light">come</span>
+            <span className="absolute -bottom-1 left-0 bg-neon-blue h-0.5 w-full opacity-70"></span>
           </span>
         </a>
         
@@ -57,14 +57,14 @@ const Navbar = ({
               href={href}
               className={`transition-colors ${
                 activeSection === href.substring(1) 
-                  ? 'text-yellow-600 font-medium' 
-                  : 'text-[#333333] hover:text-yellow-500'
+                  ? 'text-neon-blue' 
+                  : 'text-light hover:text-neon-blue'
               }`}
             >
               {label}
             </a>
           ))}
-          <Link href="/passion" className="text-[#333333] hover:text-yellow-500 transition-colors flex items-center gap-1">
+          <Link href="/passion" className="text-light hover:text-neon-blue transition-colors flex items-center gap-1">
             <span>Passion</span>
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
@@ -86,7 +86,7 @@ const Navbar = ({
         {/* Mobile Menu Button */}
         <button 
           onClick={toggleMobileMenu} 
-          className="md:hidden text-[#333333] focus:outline-none"
+          className="md:hidden text-light focus:outline-none"
           aria-label="Toggle mobile menu"
         >
           <svg 
@@ -123,7 +123,7 @@ const Navbar = ({
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white bg-opacity-95 backdrop-blur-md"
+            className="md:hidden bg-dark bg-opacity-95 backdrop-blur-md"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex flex-col space-y-4 px-4 py-6">
@@ -133,8 +133,8 @@ const Navbar = ({
                   href={href}
                   className={`py-2 transition-colors ${
                     activeSection === href.substring(1) 
-                      ? 'text-yellow-600 font-medium' 
-                      : 'text-[#333333] hover:text-yellow-500'
+                      ? 'text-neon-blue' 
+                      : 'text-light hover:text-neon-blue'
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -143,7 +143,7 @@ const Navbar = ({
               ))}
               <Link 
                 href="/passion" 
-                className="py-2 text-[#333333] hover:text-yellow-500 transition-colors flex items-center gap-1"
+                className="py-2 text-light hover:text-neon-blue transition-colors flex items-center gap-1"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <span>Passion</span>

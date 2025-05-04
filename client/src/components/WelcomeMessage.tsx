@@ -73,26 +73,30 @@ const WelcomeMessage = ({ visitorName: initialName = 'Guest', className = '' }: 
   
   return (
     <motion.div 
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`p-4 rounded-lg bg-gradient-to-r from-[#fff8c4] to-[#fff2a8] border border-yellow-300 shadow-lg ${className}`}
-    >
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    className={`p-4 rounded-lg bg-gradient-to-r from-dark-lighter to-dark border border-dark-light shadow-lg mt-14 sm:mt-20 w-[90%] sm:max-w-xl mx-auto ${className}`}
+  >
+  
+
+
+
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <span className="text-2xl mr-2">{emoji}</span>
-          <h2 className="text-xl font-medium text-[#1a1a1a]">
+          <h2 className="text-xl font-medium text-light">
             {greeting}
           </h2>
         </div>
-        <div className="text-sm text-[#333333] font-mono">
+        <div className="text-sm text-light-darker font-mono">
           {currentTime}
         </div>
       </div>
       
       <div className="mt-2 flex items-center justify-between">
-        <p className="text-sm text-[#333333]">
-          Welcome to my portfolio. Feel free to explore my projects and skills!
+        <p className="text-sm text-light-darker">
+        Take a quick spin through my portfolio — feel free to explore the code, the craft, and everything in between.
         </p>
         
         {isEditing ? (
@@ -104,13 +108,13 @@ const WelcomeMessage = ({ visitorName: initialName = 'Guest', className = '' }: 
               onChange={(e) => setNameInput(e.target.value)}
               onBlur={saveName}
               onKeyDown={handleKeyDown}
-              className="bg-white text-[#333333] px-2 py-1 rounded text-sm w-24 focus:outline-none focus:ring-1 focus:ring-yellow-400 border border-yellow-300"
+              className="bg-dark-light text-light px-2 py-1 rounded text-sm w-24 focus:outline-none focus:ring-1 focus:ring-neon-blue"
               maxLength={15}
               placeholder="Your name"
             />
             <button 
               onClick={saveName} 
-              className="ml-1 text-yellow-600 hover:text-yellow-700 transition-colors text-sm"
+              className="ml-1 text-neon-blue hover:text-light transition-colors text-sm"
               aria-label="Save name"
             >
               <span className="text-lg">✓</span>
@@ -119,7 +123,7 @@ const WelcomeMessage = ({ visitorName: initialName = 'Guest', className = '' }: 
         ) : (
           <button
             onClick={startEditing}
-            className="ml-2 text-xs text-[#666666] hover:text-yellow-600 transition-colors flex items-center"
+            className="ml-2 text-xs text-light-darker hover:text-neon-blue transition-colors flex items-center"
             aria-label="Change name"
           >
             <span className="mr-1 text-xs">✏️</span>

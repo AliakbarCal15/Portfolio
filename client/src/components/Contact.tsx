@@ -64,7 +64,7 @@ const Contact = () => {
       toast({
         title: "Message sent successfully!",
         description: "Thank you for reaching out. I'll get back to you soon.",
-        className: "bg-yellow-400 text-[#1a1a1a] border-none",
+        className: "bg-neon-blue text-dark border-none",
       });
       
     } catch (error) {
@@ -83,9 +83,9 @@ const Contact = () => {
   return (
     <div className="py-20 md:py-32 relative" ref={ref}>
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-center mb-16 relative inline-block text-[#1a1a1a]">
+        <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-center mb-16 relative inline-block">
           Let's Connect
-          <span className="absolute bottom-0 left-0 w-full h-1 bg-yellow-500 opacity-70"></span>
+          <span className="absolute bottom-0 left-0 w-full h-1 bg-neon-blue opacity-70"></span>
         </h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -94,8 +94,8 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-2xl font-montserrat font-semibold mb-6 text-[#1a1a1a]">Get In Touch</h3>
-            <p className="text-[#333333] mb-8">
+            <h3 className="text-2xl font-montserrat font-semibold mb-6">Get In Touch</h3>
+            <p className="text-light-darker mb-8">
               Looking for a dynamic backend or full-stack developer? I'm open to remote roles and exciting collaborations. Feel free to reach out through the form or via any of my contact channels below.
             </p>
             
@@ -154,10 +154,10 @@ const Contact = () => {
           >
             <form 
               onSubmit={form.handleSubmit(onSubmit)} 
-              className="bg-white bg-opacity-70 p-8 rounded-lg shadow-lg border border-yellow-300"
+              className="bg-dark bg-opacity-40 p-8 rounded-lg shadow-lg border border-dark-light"
             >
               <div className="mb-6">
-                <label htmlFor="name" className="block text-[#1a1a1a] mb-2 font-medium">Name</label>
+                <label htmlFor="name" className="block text-light mb-2">Name</label>
                 <input 
                   {...form.register("name")}
                   id="name" 
@@ -172,7 +172,7 @@ const Contact = () => {
               </div>
               
               <div className="mb-6">
-                <label htmlFor="email" className="block text-[#1a1a1a] mb-2 font-medium">Email</label>
+                <label htmlFor="email" className="block text-light mb-2">Email</label>
                 <input 
                   {...form.register("email")}
                   id="email" 
@@ -188,7 +188,7 @@ const Contact = () => {
               </div>
               
               <div className="mb-6">
-                <label htmlFor="message" className="block text-[#1a1a1a] mb-2 font-medium">Message</label>
+                <label htmlFor="message" className="block text-light mb-2">Message</label>
                 <textarea 
                   {...form.register("message")}
                   id="message" 

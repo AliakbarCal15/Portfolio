@@ -5,11 +5,12 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
-import Certifications from "@/components/Certifications";
+import Certifications from "@/components/EducationAndCertifications";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import FloatingSidebar from "@/components/FloatingSidebar";
+// import ThemeToggle from "@/components/ThemeToggle";
 import { useSectionObserver } from "@/hooks/use-section-observer";
 import { useScroll } from "@/hooks/use-scroll";
 import { Toaster } from "@/components/ui/toaster";
@@ -38,7 +39,7 @@ const HomePage = () => {
   }, [isMobileMenuOpen]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#fffbea] via-[#fdf6b2] to-[#fffbe6] text-[#1a1a1a] overflow-x-hidden transition-all duration-300">
+    <div className="bg-navy dark:bg-dark min-h-screen text-light overflow-x-hidden">
       <Navbar 
         activeSection={activeSection} 
         scrollY={scrollY} 
@@ -47,22 +48,22 @@ const HomePage = () => {
       />
       <FloatingSidebar activeSection={activeSection} />
       <main>
-        <section id="home" ref={el => sectionRefs.current.home = el} className="transition-all duration-300">
+        <section id="home" ref={el => sectionRefs.current.home = el}>
           <Hero />
         </section>
-        <section id="about" ref={el => sectionRefs.current.about = el} className="transition-all duration-300">
+        <section id="about" ref={el => sectionRefs.current.about = el}>
           <About />
         </section>
-        <section id="skills" ref={el => sectionRefs.current.skills = el} className="transition-all duration-300">
+        <section id="skills" ref={el => sectionRefs.current.skills = el}>
           <Skills />
         </section>
-        <section id="projects" ref={el => sectionRefs.current.projects = el} className="transition-all duration-300">
+        <section id="projects" ref={el => sectionRefs.current.projects = el}>
           <Projects />
         </section>
-        <section id="certifications" ref={el => sectionRefs.current.certifications = el} className="transition-all duration-300">
+        <section id="certifications" ref={el => sectionRefs.current.certifications = el}>
           <Certifications />
         </section>
-        <section id="contact" ref={el => sectionRefs.current.contact = el} className="transition-all duration-300">
+        <section id="contact" ref={el => sectionRefs.current.contact = el}>
           <Contact />
         </section>
       </main>
@@ -72,20 +73,35 @@ const HomePage = () => {
   );
 };
 
-// Layout component 
-const Layout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-[#fffbea] via-[#fdf6b2] to-[#fffbe6] text-[#1a1a1a] transition-all duration-300">
-      {children}
-      <Toaster />
-    </div>
-  );
-};
-
 // Main App component with routing
 function App() {
+  // Store theme preference in local storage
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    // Check if there's a theme preference in localStorage
+    const savedTheme = localStorage.getItem('theme');
+    // If theme preference exists, use it; otherwise default to dark
+    return savedTheme ? savedTheme === 'dark' : true;
+  });
+  
+  useEffect(() => {
+    // Apply dark mode class to document root element
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    
+    // Save theme preference to localStorage
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+  }, [isDarkMode]);
+  
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <Layout>
+    <div className="min-h-screen bg-light dark:bg-navy text-dark dark:text-light transition-colors duration-300">
+      {/* <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} /> */}
       <Switch>
         <Route path="/" component={HomePage} />
         <Route path="/resume-view" component={ResumeView} />
@@ -94,7 +110,8 @@ function App() {
         <Route path="/admin-messages" component={AdminMessages} />
         <Route component={NotFound} />
       </Switch>
-    </Layout>
+      <Toaster />
+    </div>
   );
 }
 

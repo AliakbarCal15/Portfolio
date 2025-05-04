@@ -82,7 +82,8 @@ const Hero = () => {
               className="text-neon-blue font-montserrat text-lg sm:text-xl mb-4"
             >
               <Typewriter
-                words={['Hello World, I\'m', 'Hi there, I\'m', 'Welcome, I\'m']}
+                words={["Hello World, I'm", "Hi there, I'm", "You Found me!, I'm"]}
+
                 loop={0}
                 cursor
                 cursorStyle="_"
