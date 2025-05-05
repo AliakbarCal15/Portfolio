@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Aliakbar Calcuttawala - Full-Stack Developer</title>
+    
+    <!-- Favicons -->
+    <link id="favicon" rel="icon" type="image/png" href="/hello.png" />
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <script type="module" crossorigin src="/Portfolio/assets/index-E6r8Y0D_.js"></script>
+    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-CsQNhDQv.css">
+  </head>
+  <body>
+    <div id="root"></div>
+
+
+    <!-- Tab Switch Dynamic Title + Favicon -->
+    <script>
+      const originalTitle = "Aliakbar Calcuttawala - Full-Stack Developer 👋";
+      const awayTitle = "Come back soon 🙏";
+      const favicon = document.getElementById("favicon");
+
+      const activeIcon = "/hello.png";
+      const awayIcon = "/away.png";
+
+      document.title = originalTitle;
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          document.title = awayTitle;
+          favicon.href = awayIcon;
+        } else {
+          document.title = originalTitle;
+          favicon.href = activeIcon;
+        }
+      });
+    </script>
+  </body>
+</html>
