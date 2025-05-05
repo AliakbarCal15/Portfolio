@@ -1,0 +1,51 @@
+[debug] [2025-05-05T06:03:52.754Z] ----------------------------------------------------------------------
+[debug] [2025-05-05T06:03:52.758Z] Command:       C:\nvm4w\nodejs\node.exe C:\nvm4w\nodejs\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2025-05-05T06:03:52.759Z] CLI Version:   14.2.2
+[debug] [2025-05-05T06:03:52.759Z] Platform:      win32
+[debug] [2025-05-05T06:03:52.759Z] Node Version:  v23.11.0
+[debug] [2025-05-05T06:03:52.760Z] Time:          Mon May 05 2025 11:33:52 GMT+0530 (India Standard Time)
+[debug] [2025-05-05T06:03:52.760Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-05-05T06:03:53.020Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-05T06:03:53.021Z] > authorizing via signed-in user (aliakbarcal15@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Admin\Desktop\aliakbar.view
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-05-05T06:04:00.402Z] Using project from CLI flag: porfolio-7fc4a
+[debug] [2025-05-05T06:04:00.406Z] Checked if tokens are valid: true, expires at: 1746427720870
+[debug] [2025-05-05T06:04:00.407Z] Checked if tokens are valid: true, expires at: 1746427720870
+[debug] [2025-05-05T06:04:00.412Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/porfolio-7fc4a [none]
+[debug] [2025-05-05T06:04:01.245Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/porfolio-7fc4a 200
+[debug] [2025-05-05T06:04:01.245Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/porfolio-7fc4a {"projectId":"porfolio-7fc4a","projectNumber":"676933778032","displayName":"porfolio","name":"projects/porfolio-7fc4a","resources":{"hostingSite":"porfolio-7fc4a"},"state":"ACTIVE","etag":"1_63671f9c-caed-4999-8310-55b9e47a315e"}
+[info] i  Using project porfolio-7fc4a (porfolio) 
+[info] 
+=== Hosting Setup
+[debug] [2025-05-05T06:04:01.263Z] Checked if tokens are valid: true, expires at: 1746427720870
+[debug] [2025-05-05T06:04:01.263Z] Checked if tokens are valid: true, expires at: 1746427720870
+[debug] [2025-05-05T06:04:01.264Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/porfolio-7fc4a [none]
+[debug] [2025-05-05T06:04:01.829Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/porfolio-7fc4a 200
+[debug] [2025-05-05T06:04:01.829Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/porfolio-7fc4a {"projectId":"porfolio-7fc4a","projectNumber":"676933778032","displayName":"porfolio","name":"projects/porfolio-7fc4a","resources":{"hostingSite":"porfolio-7fc4a"},"state":"ACTIVE","etag":"1_63671f9c-caed-4999-8310-55b9e47a315e"}
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
