@@ -2,16 +2,16 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
-import cartographer from '@replit/vite-plugin-cartographer'; // ✅ fix: import at top (no dynamic await)
+import { cartographer } from '@replit/vite-plugin-cartographer'; // ✅ named import
 
 export default defineConfig({
-  base: '/Portfolio/', // ✅ For GitHub Pages or Netlify with /Portfolio route
+  base: '/Portfolio/',
   plugins: [
     react(),
     runtimeErrorOverlay(),
     ...(process.env.NODE_ENV !== 'production' &&
     process.env.REPL_ID !== undefined
-      ? [cartographer()] // ✅ directly call it here
+      ? [cartographer()] // ✅ this now works correctly
       : []),
   ],
   resolve: {
